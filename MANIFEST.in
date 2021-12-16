@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include thirvusoft *.css
+recursive-include thirvusoft *.csv
+recursive-include thirvusoft *.html
+recursive-include thirvusoft *.ico
+recursive-include thirvusoft *.js
+recursive-include thirvusoft *.json
+recursive-include thirvusoft *.md
+recursive-include thirvusoft *.png
+recursive-include thirvusoft *.py
+recursive-include thirvusoft *.svg
+recursive-include thirvusoft *.txt
+recursive-exclude thirvusoft *.pyc
