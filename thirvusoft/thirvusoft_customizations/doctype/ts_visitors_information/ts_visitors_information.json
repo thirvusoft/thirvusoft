@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TS_V.###",
+ "creation": "2021-12-23 18:20:52.868005",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "card",
+  "name1",
+  "contact",
+  "email",
+  "from",
+  "purpose",
+  "meetingperson",
+  "intime",
+  "outtime",
+  "duration"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "card",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Card",
+   "options": "VIP : V001/1001\nVIP : V002/1002\nVIP : V003/1003\nVIP : V004/1004\nVIP : V005/1005\nVIP : V006/1006\nVIP : V007/1007\nVIP : V008/1008\nVIP : V009/1009\nMaintenance 1 : M001/601\nMaintenance 2 : M002/602\nMaintenance 3 : M003/603\nMaintenance 4 : M004/604\nMaintenance 5 : M005/605",
+   "reqd": 1
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact No.",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-mail"
+  },
+  {
+   "fieldname": "from",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "meetingperson",
+   "fieldtype": "Data",
+   "label": "Meeting Person"
+  },
+  {
+   "fieldname": "intime",
+   "fieldtype": "Time",
+   "label": "In Time",
+   "reqd": 1
+  },
+  {
+   "default": "00:00:00",
+   "fieldname": "outtime",
+   "fieldtype": "Time",
+   "label": "Out Time"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-12-24 12:03:44.201251",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Visitors Information",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
