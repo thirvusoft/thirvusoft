@@ -9,9 +9,9 @@ import re
 class TSVisitorsInformation(Document):
 	def validate(self):
 		if(self.outtime != "00:00:00"):
-			hours = datetime.strptime(self.outtime, '%H:%M:%S') - datetime.strptime(self.intime, '%H:%M:%S')
-			shours = str(hours)
-			self.duration = shours
+			duration = datetime.strptime(self.outtime, '%H:%M:%S') - datetime.strptime(self.intime, '%H:%M:%S')
+			sduration = str(duration)
+			self.duration = sduration
 		else:
 			pass
 		pattern = re.compile("(0|91)?[6-9][0-9]{9}")

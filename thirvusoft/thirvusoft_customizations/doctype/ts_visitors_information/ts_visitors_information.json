@@ -15,6 +15,7 @@
   "from",
   "purpose",
   "meetingperson",
+  "emp_id",
   "intime",
   "outtime",
   "duration"
@@ -29,10 +30,10 @@
   },
   {
    "fieldname": "card",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Card",
-   "options": "VIP : V001/1001\nVIP : V002/1002\nVIP : V003/1003\nVIP : V004/1004\nVIP : V005/1005\nVIP : V006/1006\nVIP : V007/1007\nVIP : V008/1008\nVIP : V009/1009\nMaintenance 1 : M001/601\nMaintenance 2 : M002/602\nMaintenance 3 : M003/603\nMaintenance 4 : M004/604\nMaintenance 5 : M005/605",
+   "options": "TS Card Details",
    "reqd": 1
   },
   {
@@ -68,8 +69,10 @@
   },
   {
    "fieldname": "meetingperson",
-   "fieldtype": "Data",
-   "label": "Meeting Person"
+   "fieldtype": "Link",
+   "label": "Meeting Person",
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fieldname": "intime",
@@ -88,11 +91,17 @@
    "fieldtype": "Data",
    "label": "Duration",
    "read_only": 1
+  },
+  {
+   "fetch_from": "meetingperson.employee_id",
+   "fieldname": "emp_id",
+   "fieldtype": "Data",
+   "label": "Emp ID"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-24 12:03:44.201251",
+ "modified": "2021-12-27 16:33:25.867168",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Visitors Information",
