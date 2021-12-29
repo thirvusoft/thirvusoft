@@ -58,6 +58,7 @@ app_license = "MIT"
 
 # before_install = "thirvusoft.install.before_install"
 # after_install = "thirvusoft.install.after_install"
+after_install= "thirvusoft.thirvusoft_customizations.custom.python.role.create_custom_role"
 
 # Desk Notifications
 # ------------------
@@ -90,12 +91,10 @@ app_license = "MIT"
 # Hook on document methods and events
 
 # doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
+#  	"TS Visitors Information": {
+#  		"after_install": "thirvusoft.thirvusoft.thirvusoft_customizations.custom.python.role",
+# 	}
+#  }
 
 # Scheduled Tasks
 # ---------------
