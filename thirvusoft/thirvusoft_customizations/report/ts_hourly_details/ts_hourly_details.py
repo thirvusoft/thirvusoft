@@ -43,7 +43,8 @@ def get_columns():
 		{
 			'fieldname':'reason',
 			'fieldtype':'data',
-			'label':_('reason')
+			'label':_('reason'),
+			'width':'150'
 		}
 	]
 	return columns

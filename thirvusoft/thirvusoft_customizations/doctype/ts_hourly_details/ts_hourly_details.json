@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "LEAVE.###",
+ "autoname": "PERMISSION.###",
  "creation": "2021-12-28 12:51:38.456271",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -66,8 +66,7 @@
    "fieldtype": "Link",
    "label": "Reason",
    "options": "TS Employee Permission Reason",
-   "reqd": 1,
-   "unique": 1
+   "reqd": 1
   },
   {
    "fieldname": "employee_id",
@@ -87,7 +86,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2021-12-31 12:06:52.578706",
+ "modified": "2022-01-06 08:28:20.032084",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Hourly Details",
