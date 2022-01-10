@@ -38,7 +38,8 @@ def get_columns():
 		{
 			'fieldname':'hours',
 			'fieldtype':'Data',
-			'label':_('Total Time')
+			'label':_('Total Time'),
+			'width':'150'
 		},
 		{
 			'fieldname':'reason',
@@ -59,7 +60,7 @@ def get_data(filters):
 		data=[]
 		for i in emp:
 			z=frappe.get_doc('TS Hourly Details',i.name)		
-			if(str(z.date)>=a and str(z.date)<=b):	
+			if(str(z.date)>=a and str(z.date)<=b and z.docstatus==1):	
 				row={'employee_id':z.employee_id, 'date':z.date, 'name':z.employee_name, 
 				'start_time':z.start_time, 'end_time':z.end_time, 'reason':z.reason, 'hours':z.hours}
 				data.append(row)
