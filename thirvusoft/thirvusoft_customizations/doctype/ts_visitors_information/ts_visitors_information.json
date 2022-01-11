@@ -7,15 +7,19 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "date",
-  "card",
+  "basic_details_section",
   "name1",
   "contact",
   "email",
+  "column_break_5",
+  "date",
+  "card",
   "from",
-  "purpose",
+  "visiting_details_section",
   "meetingperson",
   "emp_id",
+  "purpose",
+  "column_break_13",
   "intime",
   "outtime",
   "duration",
@@ -47,7 +51,7 @@
   {
    "fieldname": "contact",
    "fieldtype": "Data",
-   "label": "Contact No.",
+   "label": "Contact Number",
    "reqd": 1
   },
   {
@@ -59,13 +63,13 @@
    "fieldname": "from",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "From",
+   "label": "From Place",
    "reqd": 1
   },
   {
    "fieldname": "purpose",
    "fieldtype": "Data",
-   "label": "Purpose",
+   "label": "Visiting Purpose",
    "reqd": 1
   },
   {
@@ -97,18 +101,36 @@
    "fetch_from": "meetingperson.employee_id",
    "fieldname": "emp_id",
    "fieldtype": "Data",
-   "label": "Emp ID"
+   "label": "Employee ID"
   },
   {
    "fieldname": "temp",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Temperature",
    "reqd": 1
+  },
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visiting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Visiting Details"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-29 15:56:42.293172",
+ "modified": "2022-01-11 15:41:32.974835",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Visitors Information",
