@@ -90,12 +90,6 @@ after_install= "thirvusoft.thirvusoft_customizations.custom.python.role.create_c
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#  	"TS Visitors Information": {
-#  		"after_install": "thirvusoft.thirvusoft.thirvusoft_customizations.custom.python.role",
-# 	}
-#  }
-
 # Scheduled Tasks
 # ---------------
 
