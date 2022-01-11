@@ -7,11 +7,12 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "date",
-  "time",
   "emp_name",
   "emp_id",
-  "temp"
+  "temp",
+  "column_break_4",
+  "date",
+  "time"
  ],
  "fields": [
   {
@@ -32,27 +33,32 @@
    "fieldname": "emp_name",
    "fieldtype": "Link",
    "in_list_view": 1,
-   "label": "Emp Name",
-   "options": "Employee"
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
   },
   {
    "fetch_from": "emp_name.employee_id",
    "fieldname": "emp_id",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Emp ID",
+   "label": "Employee ID",
    "unique": 1
   },
   {
    "fieldname": "temp",
-   "fieldtype": "Data",
+   "fieldtype": "Float",
    "label": "Temperature",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-12-29 15:57:37.020282",
+ "modified": "2022-01-11 14:51:10.861611",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Employee Temperature",
