@@ -9,7 +9,7 @@
  "filters": [],
  "idx": 0,
  "is_standard": "Yes",
- "modified": "2022-01-10 12:06:33.504432",
+ "modified": "2022-01-11 17:05:35.631884",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Employee Permission",
@@ -21,6 +21,9 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Leave Approver"
   }
  ]
 }

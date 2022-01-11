@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "PERMISSION.###",
+ "autoname": "PERM.######",
  "creation": "2021-12-28 12:51:38.456271",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -26,19 +26,17 @@
    "reqd": 1
   },
   {
-   "fieldname": "amended_from",
+   "fieldname": "employee_id",
    "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "TS Hourly Details",
-   "print_hide": 1,
-   "read_only": 1
+   "label": "Employee ID",
+   "options": "Employee",
+   "reqd": 1
   },
   {
-   "fieldname": "permission_approvers",
-   "fieldtype": "Link",
-   "label": "Permission Approver",
-   "options": "User",
+   "fetch_from": "employee_id.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
    "reqd": 1
   },
   {
@@ -59,7 +57,15 @@
   {
    "fieldname": "hours",
    "fieldtype": "Data",
-   "label": "Total Time"
+   "label": "Total Time",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee_id.leave_approver",
+   "fieldname": "permission_approvers",
+   "fieldtype": "Data",
+   "label": "Permission Approver",
+   "read_only": 1
   },
   {
    "fieldname": "reason",
@@ -69,27 +75,22 @@
    "reqd": 1
   },
   {
-   "fieldname": "employee_id",
+   "fieldname": "amended_from",
    "fieldtype": "Link",
-   "label": "Employee ID",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "fetch_from": "employee_id.employee_name",
-   "fieldname": "employee_name",
-   "fieldtype": "Data",
-   "label": "Employee Name",
-   "reqd": 1
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "TS Permission Details",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-01-06 08:28:20.032084",
+ "modified": "2022-01-11 18:33:39.142624",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
- "name": "TS Hourly Details",
+ "name": "TS Permission Details",
  "owner": "Administrator",
  "permissions": [
   {
@@ -106,6 +107,7 @@
   },
   {
    "cancel": 1,
+   "create": 1,
    "delete": 1,
    "email": 1,
    "export": 1,

@@ -27,41 +27,47 @@ def get_columns(filters):
 			"label":_("Employee Name"),
 			 "fieldname":"name",
 			 "fieldtype":"Data",
-			 "width":200
+			 "width":150
 		},
 		{
-			"label":_("Reason"),
-			 "fieldname":"reason",
-			 "fieldtype":"Text",
-			 "width":200
+			"label":_("From Time"),
+			 "fieldname":"start_time",
+			 "fieldtype":"Time"
+		},
+		{
+			"label":_("To Time"),
+			 "fieldname":"end_time",
+			 "fieldtype":"Time"
 		},
 		{
 			"label":_("Absent Time"),
 			 "fieldname":"hours",
 			 "fieldtype":"Time"
 		},
+		{
+			"label":_("Reason"),
+			 "fieldname":"reason",
+			 "fieldtype":"Text",
+			 "width":200
+		}
 	]
 	return columns
-def get_conditions(filters):
-	conditions ={}
-	if(filters.date):
-		conditions['date']=filters.date
-	return conditions
-
-
-
 def get_data(filters):
+	if(filters.start_date and filters.end_date):
+		startdate=filters.start_date
+		enddate=filters.end_date
+	all_doc=frappe.get_all('TS Employee Permission')
+	dates=[]
+	for date in [date.name for date in all_doc]:
+		if(date>=startdate and date<=enddate):	
+			dates.append(date)
 	data=[]
-	conditions=get_conditions(filters)
-	date=conditions['date']
-	print(date)
-	emp = frappe.get_doc("TS Employee Permission",date,order_by="employee")
-	for i in emp.get("permission_details"):
-		name=i.first_name
-		if(i.middle_name!=None):name+=' '+i.middle_name
-		if(i.last_name!=None):name+=' '+i.last_name
-		print(name,i.hours)
-		#row={'date':i.date, 'employee':i.permission_details.employee}
-		row={'date':date, 'employee':i.employee, 'name':name, 'reason':i.reason, 'hours':i.hours}
-		data.append(row)
+	for date in dates:
+		doc=frappe.get_doc('TS Employee Permission',date)
+		for emp in doc.permission_details:
+			row={'date':doc.date,'employee':emp.employee,'name':emp.employee_name,'start_time':emp.start_time,'end_time':emp.end_time,'hours':emp.hours,'reason':emp.reason}
+			data.append(row)
+
+
 	return data
+		

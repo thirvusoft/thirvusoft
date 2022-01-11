@@ -23,7 +23,8 @@ def get_columns():
 		{
 			'fieldname':'name',
 			'fieldtype':'Data',
-			'label':_('Name')
+			'label':_('Name'),
+			'width':150
 		},
 		{
 			'fieldname':'start_time',
@@ -37,8 +38,8 @@ def get_columns():
 		},
 		{
 			'fieldname':'hours',
-			'fieldtype':'Data',
-			'label':_('Total Time'),
+			'fieldtype':'Time',
+			'label':_('Absent Hours'),
 			'width':'150'
 		},
 		{
@@ -53,16 +54,16 @@ def get_columns():
 
 
 def get_data(filters):
-	emp=frappe.get_all('TS Hourly Details')
+	emp=frappe.get_all('TS Permission Details')
 	if(filters.start_date and filters.end_date):
-		a=filters.start_date
-		b=filters.end_date
+		startdate=filters.start_date
+		enddate=filters.end_date
 		data=[]
 		for i in emp:
-			z=frappe.get_doc('TS Hourly Details',i.name)		
-			if(str(z.date)>=a and str(z.date)<=b and z.docstatus==1):	
-				row={'employee_id':z.employee_id, 'date':z.date, 'name':z.employee_name, 
-				'start_time':z.start_time, 'end_time':z.end_time, 'reason':z.reason, 'hours':z.hours}
+			doc=frappe.get_doc('TS Permission Details',i.name)		
+			if(str(doc.date)>=startdate and str(doc.date)<=enddate and doc.docstatus==1):	
+				row={'employee_id':doc.employee_id, 'date':doc.date, 'name':doc.employee_name, 
+				'start_time':doc.start_time, 'end_time':doc.end_time, 'reason':doc.reason, 'hours':doc.hours}
 				data.append(row)
 		return data
 

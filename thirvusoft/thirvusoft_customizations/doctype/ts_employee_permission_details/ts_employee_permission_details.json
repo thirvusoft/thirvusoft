@@ -8,9 +8,7 @@
  "engine": "InnoDB",
  "field_order": [
   "employee",
-  "first_name",
-  "middle_name",
-  "last_name",
+  "employee_name",
   "start_time",
   "end_time",
   "hours",
@@ -18,6 +16,7 @@
  ],
  "fields": [
   {
+   "default": "00:00:00",
    "fieldname": "start_time",
    "fieldtype": "Time",
    "in_list_view": 1,
@@ -25,6 +24,7 @@
    "reqd": 1
   },
   {
+   "default": "00:00:00",
    "fieldname": "end_time",
    "fieldtype": "Time",
    "label": "End Time",
@@ -33,7 +33,8 @@
   {
    "fieldname": "hours",
    "fieldtype": "Data",
-   "label": "Absent Hours"
+   "label": "Absent Hours",
+   "read_only": 1
   },
   {
    "fieldname": "reason",
@@ -52,30 +53,18 @@
    "reqd": 1
   },
   {
-   "fetch_from": "employee.middle_name",
-   "fieldname": "middle_name",
-   "fieldtype": "Data",
-   "label": "Middle name"
-  },
-  {
-   "fetch_from": "employee.last_name",
-   "fieldname": "last_name",
-   "fieldtype": "Data",
-   "label": "Last Name"
-  },
-  {
-   "fetch_from": "employee.first_name",
-   "fieldname": "first_name",
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "First Name",
+   "label": "Employee Name",
    "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2021-12-24 14:49:50.278319",
+ "modified": "2022-01-11 17:02:54.949210",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Employee Permission Details",

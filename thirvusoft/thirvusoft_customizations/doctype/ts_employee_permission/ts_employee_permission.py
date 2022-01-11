@@ -5,8 +5,7 @@ import frappe
 from frappe.model.document import Document
 from datetime import datetime
 class TSEmployeePermission(Document):
-	def autoname(self):
-		self.name=self.date
+	pass
 	
 
 	

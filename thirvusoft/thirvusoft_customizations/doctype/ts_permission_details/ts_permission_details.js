@@ -1,11 +1,5 @@
-// Copyright (c) 2021, ThirvuSoft Private Limited and contributors
+// Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 // For license information, please see license.txt
-
-frappe.ui.form.on('TS Employee Permission', {
-	// refresh: function(frm) {
-
-	// }
-});
 function timediff(frm,cdt,cdn){
 	let row = locals[cdt][cdn];
 		var starttimeString = row.start_time;
@@ -30,12 +24,11 @@ function timediff(frm,cdt,cdn){
 		frappe.model.set_value(cdt, cdn, "hours",
 		hours +' Hours '+ minutes+' Minutes ');
 }
-frappe.ui.form.on('TS Employee Permission Details', {
-	
+frappe.ui.form.on('TS Permission Details', {
 	end_time:function(frm, cdt, cdn){
-		timediff(frm,cdt,cdn);
+		timediff(frm,cdt,cdn)
 	},
 	start_time:function(frm, cdt, cdn){
-		timediff(frm,cdt,cdn);
+		timediff(frm,cdt,cdn)
 	}
 });
