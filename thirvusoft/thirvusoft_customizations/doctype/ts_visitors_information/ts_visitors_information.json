@@ -1,0 +1,165 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TS_V./.DD./.MM./.YY./.####",
+ "creation": "2021-12-23 18:20:52.868005",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_details_section",
+  "name1",
+  "contact",
+  "email",
+  "column_break_5",
+  "date",
+  "card",
+  "from",
+  "visiting_details_section",
+  "meetingperson",
+  "emp_id",
+  "purpose",
+  "column_break_13",
+  "intime",
+  "outtime",
+  "duration",
+  "temp"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "card",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Card",
+   "options": "TS Card Details",
+   "reqd": 1
+  },
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "E-mail"
+  },
+  {
+   "fieldname": "from",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "From Place",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Visiting Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "meetingperson",
+   "fieldtype": "Link",
+   "label": "Meeting Person",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "intime",
+   "fieldtype": "Time",
+   "label": "In Time",
+   "reqd": 1
+  },
+  {
+   "default": "00:00:00",
+   "fieldname": "outtime",
+   "fieldtype": "Time",
+   "label": "Out Time"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Data",
+   "label": "Duration",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "meetingperson.employee_id",
+   "fieldname": "emp_id",
+   "fieldtype": "Data",
+   "label": "Employee ID"
+  },
+  {
+   "fieldname": "temp",
+   "fieldtype": "Float",
+   "label": "Temperature",
+   "reqd": 1
+  },
+  {
+   "fieldname": "basic_details_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Details"
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visiting_details_section",
+   "fieldtype": "Section Break",
+   "label": "Visiting Details"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-01-11 15:41:32.974835",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Visitors Information",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Receptionist",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
