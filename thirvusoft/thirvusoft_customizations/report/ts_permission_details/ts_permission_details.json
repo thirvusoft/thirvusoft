@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2022-01-11 11:31:46.049976",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2022-01-11 18:37:13.028969",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Permission Details",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "TS Permission Details",
+ "report_name": "TS Permission Details",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Leave Approver"
+  },
+  {
+   "role": "System Manager"
+  }
+ ]
+}
