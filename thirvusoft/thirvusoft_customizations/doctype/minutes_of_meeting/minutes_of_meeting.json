@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:ts_discussion_about",
+ "creation": "2022-01-19 09:00:18.367392",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ts_date",
+  "ts_participents",
+  "ts_meeting_with",
+  "ts_discussion_about",
+  "column_break_5",
+  "ts_time",
+  "ts_deliverabled",
+  "ts_venue",
+  "ts_remarks",
+  "section_break_9",
+  "ts_points_discussed",
+  "ts_task_to_be_followed",
+  "section_break_12",
+  "ts_prepared_by",
+  "ts_designation",
+  "ts_email_address",
+  "column_break_16",
+  "ts_signature_18"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "ts_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_participents",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Participents",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_meeting_with",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Meeting With",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_venue",
+   "fieldtype": "Data",
+   "label": "Venue"
+  },
+  {
+   "fieldname": "ts_discussion_about",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Discussion About",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "ts_deliverabled",
+   "fieldtype": "Data",
+   "label": "Deliverables"
+  },
+  {
+   "fieldname": "ts_remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "ts_points_discussed",
+   "fieldtype": "Table",
+   "label": "Points Discussed",
+   "options": "TS points to discussed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_task_to_be_followed",
+   "fieldtype": "Table",
+   "label": "Task to be followed",
+   "options": "TS Task to be followed",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_prepared_by",
+   "fieldtype": "Data",
+   "label": "Prepared by",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "fieldname": "ts_email_address",
+   "fieldtype": "Data",
+   "label": "Email Address"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ts_signature_18",
+   "fieldtype": "Signature",
+   "label": "Signature"
+  },
+  {
+   "fieldname": "ts_time",
+   "fieldtype": "Time",
+   "label": "Time"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-01-19 09:25:02.782216",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "Minutes of Meeting",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
