@@ -58,7 +58,9 @@ app_license = "MIT"
 
 # before_install = "thirvusoft.install.before_install"
 # after_install = "thirvusoft.install.after_install"
-after_install= "thirvusoft.thirvusoft_customizations.custom.python.role.create_custom_role"
+after_install= ["thirvusoft.thirvusoft_customizations.custom.python.role.create_custom_role","thirvusoft.thirvusoft.thirvusoft_customizations.custom.python.default.create_custom_meeting"]
+                
+
 
 # Desk Notifications
 # ------------------
