@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:ts_meetingtype",
  "creation": "2022-01-19 15:46:34.998322",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -12,12 +13,13 @@
   {
    "fieldname": "ts_meetingtype",
    "fieldtype": "Data",
-   "label": "Meeting Type"
+   "label": "Meeting Type",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-19 15:46:34.998322",
+ "modified": "2022-01-20 08:29:16.669124",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Meeting Type",

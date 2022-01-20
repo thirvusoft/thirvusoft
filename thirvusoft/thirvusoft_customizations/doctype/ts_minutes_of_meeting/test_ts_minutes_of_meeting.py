@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestMinutesofMeeting(unittest.TestCase):
+class TestTSMinutesofMeeting(unittest.TestCase):
 	pass
