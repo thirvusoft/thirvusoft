@@ -21,7 +21,7 @@
   "ts_meeting_mode",
   "ts_points_discussed",
   "ts_task_followed",
-  "ts_points_aggred",
+  "ts_points_agreed",
   "ts_section_break_11",
   "ts_data_13",
   "ts_designation",
@@ -53,7 +53,6 @@
   {
    "fieldname": "ts_meeting_type",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Meeting Type",
    "options": "TS Meeting Type",
    "reqd": 1
@@ -117,13 +116,6 @@
    "label": "Email Address"
   },
   {
-   "depends_on": "eval:doc.ts_meeting_type==\"Client\"",
-   "fieldname": "ts_points_aggred",
-   "fieldtype": "Table",
-   "label": "Points Aggred",
-   "options": "TS Points Aggred"
-  },
-  {
    "fieldname": "column_break_17",
    "fieldtype": "Column Break"
   },
@@ -145,11 +137,18 @@
    "fieldtype": "Time",
    "label": "To Time",
    "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.ts_meeting_type==\"Client\"||\ndoc.meet_type==\"Client\"",
+   "fieldname": "ts_points_agreed",
+   "fieldtype": "Table",
+   "label": "Points Agreed",
+   "options": "TS Points Agreed"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-20 11:00:18.091329",
+ "modified": "2022-01-21 10:50:58.193705",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Minutes of Meeting",
