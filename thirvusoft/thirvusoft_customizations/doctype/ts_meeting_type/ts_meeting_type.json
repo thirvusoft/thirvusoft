@@ -1,17 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:ts_meetingtype",
- "creation": "2022-01-19 15:46:34.998322",
+ "autoname": "field:meeting_type",
+ "creation": "2022-01-21 17:32:05.076649",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "ts_meetingtype"
+  "meeting_type"
  ],
  "fields": [
   {
-   "fieldname": "ts_meetingtype",
+   "fieldname": "meeting_type",
    "fieldtype": "Data",
    "label": "Meeting Type",
    "unique": 1
@@ -19,12 +19,25 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-21 10:34:02.007103",
+ "modified": "2022-01-21 17:32:17.752441",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Meeting Type",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC"
