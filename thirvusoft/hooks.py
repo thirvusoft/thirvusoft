@@ -82,10 +82,15 @@ after_install= "thirvusoft.thirvusoft_customizations.custom.python.role.create_c
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
-
+override_doctype_class = {
+#	"ToDo": "custom_app.overrides.CustomToDo"
+	"Attendance":"thirvusoft.thirvusoft_customizations.custom.python.location_check.location"
+}
+#doc_events={
+#	"Attendance":{
+#		"validate":"thirvusoft.thirvusoft_customizations.custom.python.location_check.val"
+#	}
+#}
 # Document Events
 # ---------------
 # Hook on document methods and events
