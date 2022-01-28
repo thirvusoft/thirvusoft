@@ -23,7 +23,9 @@
   "intime",
   "outtime",
   "duration",
-  "temp"
+  "temp",
+  "notes_section",
+  "description"
  ],
  "fields": [
   {
@@ -68,8 +70,9 @@
   },
   {
    "fieldname": "purpose",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "label": "Visiting Purpose",
+   "options": "TS Visiting Purpose",
    "reqd": 1
   },
   {
@@ -126,11 +129,21 @@
   {
    "fieldname": "column_break_13",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Long Text",
+   "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-24 16:43:43.749940",
+ "modified": "2022-01-27 11:28:31.920568",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Visitors Information",
