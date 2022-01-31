@@ -1,15 +1,15 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{ts_meeting_type}-{ts_date}-{ts_meeting_with}",
+ "autoname": "format:{ts_meeting_type} - {ts_meeting_with}",
  "creation": "2022-01-20 09:32:32.750481",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "ts_date",
-  "ts_participants",
   "ts_meeting_with",
+  "ts_participants",
   "ts_meeting_type",
   "ts_remarks",
   "ts_column_break_5",
@@ -148,7 +148,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-21 10:50:58.193705",
+ "modified": "2022-01-31 15:01:36.355733",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Minutes of Meeting",
@@ -163,6 +163,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
    "share": 1,
    "write": 1
   }
