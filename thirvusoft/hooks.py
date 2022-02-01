@@ -59,8 +59,6 @@ app_license = "MIT"
 # before_install = "thirvusoft.install.before_install"
 # after_install = "thirvusoft.install.after_install"
 after_install= "thirvusoft.thirvusoft_customizations.custom.python.install.after_install"
-
-
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config

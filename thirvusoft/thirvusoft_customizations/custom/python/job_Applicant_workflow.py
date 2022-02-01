@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 import frappe
 import unittest
 from frappe.utils import random_string
@@ -7,30 +8,7 @@ from frappe.test_runner import make_test_records
 from frappe.workflow.doctype.workflow.workflow import Workflow
 
 
-
-def after_install():
-	create_custom_role()
-	create_custom_meeting()
-	create_jobApplicant_workflow()
-
-
-
-def create_custom_role():
-	existing_doc = frappe.db.get_value('Role', {'role_name': 'Receptionist'}, 'name')
-	if not existing_doc:
-		new_doc = frappe.new_doc('Role')
-		new_doc.role_name = 'Receptionist'
-		new_doc.save()
-
-
-def create_custom_meeting():
-    meetlist=["General","Scrum","Management","Wonder","Thirvu","Client","Session"]
-    for row in meetlist:
-        new_doc = frappe.new_doc('TS Meeting Type')
-        new_doc.ts_meeting_type = row
-        new_doc.save()
-
-def create_jobApplicant_workflow():
+def create_workflow():
 	if frappe.db.exists('Workflow', 'Job Applicant'):
 		frappe.delete_doc('Workflow', 'Job Applicant')
 
@@ -44,47 +22,53 @@ def create_jobApplicant_workflow():
 	workflow.is_active = 1
 	workflow.send_email_alert = 1
 	workflow.append('states', dict(
-		state = 'Draft', allow_edit = 'Receptionist',update_field = 'status', update_value = 'open'
+		state = 'Draft', allow_edit = 'All'
 	))
 	workflow.append('states', dict(
-		state = 'Applied', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Applied'
+		state = 'Applied', allow_edit = 'Receptionist',
 	))
 	workflow.append('states', dict(
-		state = 'Application Accepted', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Application Accepted'
+		state = 'Application Accepted', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'Application Rejected', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Application Rejected'
+		state = 'Application Rejected', allow_edit = 'Receptionist',
 	))
 	workflow.append('states', dict(
-		state = 'Call for Interview', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Call for Interview'
+		state = 'Call for Interview', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'Invitation Accepted', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Invitation Accepted'
+		state = 'Invitation Accepted', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'Invitation Rejected', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Invitation Rejected'
+		state = 'Invitation Rejected', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'Initial Round', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Initial Round'
+		state = 'Initial Round', allow_edit = 'Receptionist',
 	))
 	workflow.append('states', dict(
-		state = 'Technical Round', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Technical Round'
+		state = 'Technical Round', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'HR Round', allow_edit = 'Receptionist',update_field = 'status', update_value = 'HR Round'
+		state = 'HR Round', allow_edit = 'Receptionist',
 	))
 	workflow.append('states', dict(
-		state = 'Document Verification', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Document Verification'
+		state = 'Document Verification', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'Call Letter', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Call Letter'
+		state = 'Call Letter', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'On Board', allow_edit = 'Receptionist',update_field = 'status', update_value = 'On Board'
+		state = 'On Board', allow_edit = 'Receptionist'
 	))
 	workflow.append('states', dict(
-		state = 'Rejected', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Rejected'
+		state = 'Rejected', allow_edit = 'Receptionist'
 	))
+    
+
+
+
+
+
 	workflow.append('transitions', dict(
 		state = 'Draft', action='Applied', next_state = 'Applied',
 		allowed='Receptionist', allow_self_approval= 1
