@@ -84,7 +84,11 @@ after_install= "thirvusoft.thirvusoft_customizations.custom.python.install.after
 # override_doctype_class = {
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
-
+doc_events = {
+ 	"Opportunity": {
+ 		"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.create_project.after_insert"	
+	}
+}
 # Document Events
 # ---------------
 # Hook on document methods and events

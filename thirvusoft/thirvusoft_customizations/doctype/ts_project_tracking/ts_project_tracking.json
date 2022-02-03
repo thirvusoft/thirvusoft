@@ -1,0 +1,158 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:project_name",
+ "creation": "2022-02-03 08:50:17.086417",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project_details_section",
+  "series",
+  "project_name",
+  "project_type",
+  "project_need",
+  "existing_software",
+  "customer_name",
+  "status",
+  "estimated_cost",
+  "default_cost_center",
+  "expected_start_date",
+  "expected_closing",
+  "address_and_contact_section",
+  "contact_details",
+  "address_details",
+  "section_break_13",
+  "meeting",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "project_details_section",
+   "fieldtype": "Section Break",
+   "label": "Project Details"
+  },
+  {
+   "fieldname": "series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "projtrk-.####"
+  },
+  {
+   "fieldname": "project_name",
+   "fieldtype": "Link",
+   "label": "Project Name",
+   "options": "Opportunity",
+   "unique": 1
+  },
+  {
+   "fieldname": "project_type",
+   "fieldtype": "Data",
+   "label": "Project type"
+  },
+  {
+   "fetch_from": "project_name.project_need",
+   "fieldname": "project_need",
+   "fieldtype": "Data",
+   "label": "Project Need"
+  },
+  {
+   "fetch_from": "project_name.existing_software",
+   "fieldname": "existing_software",
+   "fieldtype": "Data",
+   "label": "Existing Software"
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Client Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status"
+  },
+  {
+   "fieldname": "estimated_cost",
+   "fieldtype": "Data",
+   "label": "Estimated Cost"
+  },
+  {
+   "fieldname": "default_cost_center",
+   "fieldtype": "Data",
+   "label": "Default Cost Center"
+  },
+  {
+   "fieldname": "expected_start_date",
+   "fieldtype": "Data",
+   "label": "Expected Start Date"
+  },
+  {
+   "fieldname": "expected_closing",
+   "fieldtype": "Data",
+   "label": "Expected End Date"
+  },
+  {
+   "fieldname": "address_and_contact_section",
+   "fieldtype": "Section Break",
+   "label": "Address and Contact"
+  },
+  {
+   "fieldname": "contact_details",
+   "fieldtype": "Link",
+   "label": "Contact Details",
+   "options": "Contact"
+  },
+  {
+   "fieldname": "address_details",
+   "fieldtype": "Link",
+   "label": "Address Details",
+   "options": "Address"
+  },
+  {
+   "fieldname": "section_break_13",
+   "fieldtype": "Section Break",
+   "label": "Meeting Table"
+  },
+  {
+   "fieldname": "meeting",
+   "fieldtype": "Table",
+   "label": "Meeting",
+   "options": "TS Client Meeting Table"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "TS Project Tracking",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-02-03 09:05:52.717359",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Project Tracking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
