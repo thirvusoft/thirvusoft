@@ -19,7 +19,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-11 18:35:09.206865",
+ "modified": "2022-02-18 13:24:31.983734",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Employee Permission Reason",
@@ -46,6 +46,18 @@
    "read": 1,
    "report": 1,
    "role": "Leave Approver",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
    "share": 1,
    "write": 1
   }
