@@ -83,6 +83,11 @@ after_install= "thirvusoft.thirvusoft_customizations.custom.python.install.after
 # ---------------
 # Override standard doctype classes
 
+doc_events = {
+	"Job Applicant": {
+		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
+	}
+}
 # override_doctype_class = {
 # 	"ToDo": "custom_app.overrides.CustomToDo"
 # }
@@ -90,7 +95,6 @@ after_install= "thirvusoft.thirvusoft_customizations.custom.python.install.after
 # Document Events
 # ---------------
 # Hook on document methods and events
-
 # Scheduled Tasks
 # ---------------
 
