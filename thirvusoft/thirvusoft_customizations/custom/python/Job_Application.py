@@ -55,3 +55,4 @@ def validation(self, phone):
     self.job_portal = self.job_portal.capitalize()
     self.referral_contact = self.referral_contact.capitalize()
     self.cover_letter = self.cover_letter.capitalize()
+    self.n = self.n.capitalize()
