@@ -42,17 +42,30 @@ def validation(self, phone):
             pass
         else:
             frappe.throw("Please enter the correct mobile Number")
-
-    self.applicant_name = self.applicant_name.capitalize()
-    self.address = self.address.capitalize()
-    self.city = self.city.capitalize()
-    self.state = self.state.capitalize()
-    self.describe_your_skills = self.describe_your_skills.capitalize()
-    self.parentguardian_name = self.parentguardian_name.capitalize()
-    self.parentguardian_occupation = self.parentguardian_occupation.capitalize()
-    self.how_they_are_related_to_you = self.how_they_are_related_to_you.capitalize()
-    self.referral_employee = self.referral_employee.capitalize()
-    self.job_portal = self.job_portal.capitalize()
-    self.referral_contact = self.referral_contact.capitalize()
-    self.cover_letter = self.cover_letter.capitalize()
-    self.n = self.n.capitalize()
+  
+    if(self.applicant_name != None):
+        self.applicant_name = self.applicant_name.capitalize()
+    if(self.city != None):
+        self.city = self.city.capitalize()
+    if(self.address != None):
+        self.address = self.address.capitalize()
+    if(self.state != None):
+        self.state = self.state.capitalize()
+    if(self.describe_your_skills != None):
+        self.describe_your_skillse = self.describe_your_skills.capitalize()
+    if(self.parentguardian_name != None):
+        self.parentguardian_name = self.parentguardian_name.capitalize()
+    if(self.parentguardian_occupation != None):
+        self.parentguardian_occupation = self.parentguardian_occupation.capitalize()
+    if(self.how_they_are_related_to_you != None):
+        self.how_they_are_related_to_you = self.how_they_are_related_to_you.capitalize()
+    if(self.referral_employee != None):
+        self.referral_employee = self.referral_employee.capitalize()
+    if(self.job_portal != None):
+        self.job_portal = self.job_portal.capitalize()
+    if(self.referral_contact != None):
+        self.referral_contact = self.referral_contact.capitalize()
+    if(self.cover_letter != None):
+        self.cover_letter = self.cover_letter.capitalize()
+    if(self.n != None):
+        self.n = self.n.capitalize()
