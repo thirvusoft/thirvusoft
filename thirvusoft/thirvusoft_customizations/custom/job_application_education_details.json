@@ -1,0 +1,32 @@
+{
+ "custom_fields": [],
+ "custom_perms": [],
+ "doctype": "Job Application Education Details",
+ "property_setters": [
+  {
+   "_assign": null,
+   "_comments": null,
+   "_liked_by": null,
+   "_user_tags": null,
+   "creation": "2022-03-09 13:50:02.502374",
+   "default_value": null,
+   "doc_type": "Job Application Education Details",
+   "docstatus": 0,
+   "doctype_or_field": "DocField",
+   "field_name": "end_year",
+   "idx": 0,
+   "modified": "2022-03-09 13:50:02.502374",
+   "modified_by": "Administrator",
+   "name": "Job Application Education Details-end_year-depends_on",
+   "owner": "Administrator",
+   "parent": null,
+   "parentfield": null,
+   "parenttype": null,
+   "property": "depends_on",
+   "property_type": "Data",
+   "row_name": null,
+   "value": ""
+  }
+ ],
+ "sync_on_migrate": 1
+}
