@@ -1,0 +1,32 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status==\"shortlisted\"",
+ "creation": "2022-03-16 15:52:58.445676",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Job Applicant",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "offer letter mail",
+ "modified": "2022-03-17 08:37:48.644572",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "shortlisted",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "condition": "doc.status==\"shortlisted\"",
+   "receiver_by_document_field": "email_id",
+   "receiver_by_role": "Receptionist"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "test account",
+ "sender_email": "sibikumark2002@gmail.com",
+ "subject": "{{doc.applicant_name}} offer letter"
+}

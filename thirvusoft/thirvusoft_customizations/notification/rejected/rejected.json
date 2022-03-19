@@ -1,0 +1,33 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status==\"Rejected\"",
+ "creation": "2022-03-16 15:44:45.681818",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Job Applicant",
+ "enabled": 1,
+ "event": "Save",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Interview update for [Job position]\n\nDear {{doc.applicant_name}},\n\nI would like to thank you for your time during the interview. We really enjoyed meeting you. \n\nYour profile was taken forward to the next level of the interview process. Your interview was scheduled on [date] around [time]. \n\nFind the location details available below,\nThirvu Soft Private Limited\n2B, Bushido Towers, Nava India Road, Sowripalayam Village, Peelamedu, Coimbatore, Tamil Nadu 641028\nPlus code : 2X9V+RH Coimbatore, Tamil Nadu\nKindly confirm your invitation acceptance via mail.\n\n\nThanks and Regards,\nMyvizhi Palanisamy\nHR Manager\nThirvu Soft Private Limited \n\n\n",
+ "modified": "2022-03-16 18:58:53.240220",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "Rejected",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "condition": "doc.status==\"Rejected\"",
+   "receiver_by_document_field": "email_id",
+   "receiver_by_role": "Receptionist"
+  }
+ ],
+ "send_system_notification": 1,
+ "send_to_all_assignees": 0,
+ "sender": "test account",
+ "sender_email": "sibikumark002@gmail.com",
+ "subject": "{{doc.applicant_name}} rejected ",
+ "value_changed": "status"
+}
