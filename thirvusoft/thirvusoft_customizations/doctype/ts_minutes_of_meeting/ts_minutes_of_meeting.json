@@ -130,7 +130,7 @@
    "fieldname": "ts_meeting_mode",
    "fieldtype": "Select",
    "label": "Meeting Mode",
-   "options": "Online\nOffline"
+   "options": "\nOnline\nOffline"
   },
   {
    "fieldname": "ts_from_time",
@@ -213,7 +213,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-22 14:58:35.598174",
+ "modified": "2022-03-22 15:34:01.768716",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Minutes of Meeting",
