@@ -1,28 +1,23 @@
 from __future__ import unicode_literals
 import frappe
-
 def after_install():
-	create_custom_role()
-	create_custom_meeting()
-	create_action()
-	create_action()
-	create_jobApplicant_workflow()
-
+    create_custom_role()
+    create_custom_meeting()
+    create_state()
+    create_action()
+    create_jobApplicant_workflow()
 def create_custom_role():
-	existing_doc = frappe.db.get_value('Role', {'role_name': 'Receptionist'}, 'name')
-	if not existing_doc:
-		new_doc = frappe.new_doc('Role')
-		new_doc.role_name = 'Receptionist'
-		new_doc.save()
-
-
+    existing_doc = frappe.db.get_value('Role', {'role_name': 'Receptionist'}, 'name')
+    if not existing_doc:
+        new_doc = frappe.new_doc('Role')
+        new_doc.role_name = 'Receptionist'
+        new_doc.save()
 def create_custom_meeting():
     meetlist=["General","Scrum","Management","Wonder","Thirvu","Client","Session"]
     for row in meetlist:
         new_doc = frappe.new_doc('TS Meeting Type')
         new_doc.ts_meeting_type = row
         new_doc.save()
-
 def create_jobApplicant_workflow():
     if frappe.db.exists('Workflow', 'Job Applicant workflow'):
         frappe.delete_doc('Workflow', 'Job Applicant workflow')
@@ -52,6 +47,9 @@ def create_jobApplicant_workflow():
     ))
     workflow.append('states', dict(
         state = 'Selected For In-Person Interview', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Selected For In-Person Interview'
+    ))
+    workflow.append('states', dict(
+        state = 'In-Person Interview', allow_edit = 'Receptionist',update_field = 'status', update_value = 'In-Person Interview'
     ))
     workflow.append('states', dict(
         state = 'Follow Up', allow_edit = 'Receptionist',update_field = 'status', update_value = 'Follow Up'
@@ -121,7 +119,6 @@ def create_jobApplicant_workflow():
         state = 'Written Test', action='Selected For HR Round', next_state = 'HR Round',
         allowed='Receptionist', allow_self_approval= 1
     ))
-
     workflow.append('transitions', dict(
         state = 'Written Test', action='Reject', next_state = 'Rejected',
         allowed='Receptionist', allow_self_approval= 1
@@ -153,14 +150,14 @@ def create_jobApplicant_workflow():
     workflow.insert(ignore_permissions=True)
     return workflow
 def create_state():
-    list=["Draft","Initial Data Validation","Selected For Telephoneic Interview","Rejected","Telephonic Interview","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","HR Round","Selected For Technical Round","Technical Round","Final Round","Selected For Employee"]
+    list=["Draft","Initial Data Validation","Selected For Telephoneic Interview","In-Person Interview","Rejected","Telephonic Interview","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","HR Round","Selected For Technical Round","Technical Round","Final Round","Selected For Employee"]
     for row in list:
         if not frappe.db.exists('Workflow State', row):
             new_doc = frappe.new_doc('Workflow State')
             new_doc.workflow_state_name = row
             new_doc.save()
 def create_action():
-    list=["Initial Data Validation","Selected For Telephoneic Interview","Reject","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","Selected For Technical Round","selected For Final Round","Selected For Employee"]
+    list=["Initial Data Validation","Selected For Telephoneic Interview","Reject","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","Selected For Technical Round","selected For Final Round","Selected For Employee","shortlisted"]
     for row in list:
         if not frappe.db.exists('Workflow Action Master', row):
             new_doc = frappe.new_doc('Workflow Action Master')

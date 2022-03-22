@@ -10,27 +10,34 @@
   "ts_date",
   "column_break_2",
   "ts_from_time",
-  "column_break_4",
   "ts_to_time",
   "section_break_6",
-  "ts_meeting_with",
-  "ts_participants",
-  "column_break_9",
   "ts_meeting_type",
-  "ts_venue",
-  "ts_column_break_5",
-  "ts_discussion_about",
+  "ts_meeting_with",
   "ts_remarks",
+  "column_break_9",
+  "ts_participants",
+  "ts_discussion_about",
+  "ts_venue",
   "ts_section_break_8",
+  "project",
   "ts_meeting_mode",
   "ts_points_discussed",
   "ts_task_followed",
   "ts_points_agreed",
+  "column_break_16",
+  "client",
+  "client_contact_number",
   "ts_section_break_11",
   "ts_data_13",
   "ts_designation",
   "column_break_17",
-  "ts_email_address"
+  "ts_email_address",
+  "section_break_28",
+  "documentation",
+  "column_break_29",
+  "audio",
+  "video"
  ],
  "fields": [
   {
@@ -44,8 +51,7 @@
    "fieldname": "ts_participants",
    "fieldtype": "Table MultiSelect",
    "label": "Participants",
-   "options": "TS Participants",
-   "reqd": 1
+   "options": "TS Participants"
   },
   {
    "fieldname": "ts_meeting_with",
@@ -60,10 +66,6 @@
    "label": "Meeting Type",
    "options": "TS Meeting Type",
    "reqd": 1
-  },
-  {
-   "fieldname": "ts_column_break_5",
-   "fieldtype": "Column Break"
   },
   {
    "fieldname": "ts_discussion_about",
@@ -128,7 +130,7 @@
    "fieldname": "ts_meeting_mode",
    "fieldtype": "Select",
    "label": "Meeting Mode",
-   "options": "Online\nOffline"
+   "options": "\nOnline\nOffline"
   },
   {
    "fieldname": "ts_from_time",
@@ -154,21 +156,64 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "section_break_6",
    "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_9",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "depends_on": "eval:doc.ts_meeting_type==\"Client\"",
+   "fieldname": "client_contact_number",
+   "fieldtype": "Link",
+   "label": "Client contact number",
+   "options": "Project"
+  },
+  {
+   "depends_on": "eval:doc.ts_meeting_type==\"Client\"",
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "label": "Client Name",
+   "options": "Project"
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "audio",
+   "fieldtype": "Attach",
+   "label": "Audio"
+  },
+  {
+   "fieldname": "video",
+   "fieldtype": "Attach",
+   "label": "Video"
+  },
+  {
+   "fieldname": "documentation",
+   "fieldtype": "Attach",
+   "label": "Documentation"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_29",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-01-31 18:04:38.576697",
+ "modified": "2022-03-22 15:34:01.768716",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Minutes of Meeting",
