@@ -1,7 +1,6 @@
 frappe.ui.form.on('Task', {
     after_save: function(frm) {
             let assign_too = [];
-            console.log(assign_too.length)
             if(frm.doc.assigned_ci){
                 assign_too.push(frm.doc.assigned_ci);
             }
