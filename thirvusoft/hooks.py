@@ -86,6 +86,9 @@ after_install= "thirvusoft.thirvusoft_customizations.custom.python.install.after
 doc_events = {
 	"Job Applicant": {
 		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
+	},
+	"Issue": {
+		"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
 	}
 }
 # override_doctype_class = {
