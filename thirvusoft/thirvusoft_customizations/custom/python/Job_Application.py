@@ -74,7 +74,6 @@ def issues_raised(self,action):
     new=frappe.get_doc({'doctype':'Task','subject': self.subject,'status': self.status,'project':self.project,'priority':self.priority,'issue':self.name,'description':self.description+"<br><a href="+self.files+" > files </a>  <br><a href="+self.screenshot+"> video </a> <br><a href="+self.audio+"> Audio </a> <br>"})
     new.insert()
     frappe.db.commit()
-    # frappe.msgprint(f"{new.subject} has been created")
     total_issues=len(frappe.db.get_all("Issue", filters={'project':self.project}))
     project_doc = frappe.get_doc('Project',self.project)
     project_doc.update({'total_issues_raised': total_issues})
