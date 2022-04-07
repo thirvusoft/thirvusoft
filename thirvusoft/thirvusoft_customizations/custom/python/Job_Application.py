@@ -79,6 +79,7 @@ def create_task(self,action):
     new=frappe.get_doc({'doctype':'Task','subject': self.subject,'status': self.status,'project':self.project,'priority':self.priority,'issue':self.name,'description':self.description})
     new.insert()
     new.save()
+    
     if len(self.ts_attachments)>0 :
         for i in range (len(self.ts_attachments)):
             new.update({'ts_attachments': self.ts_attachments[i].ts_attachment})
