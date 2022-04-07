@@ -2,7 +2,7 @@ import frappe
 import re
 from datetime import datetime
 from frappe import utils
-
+from frappe.handler import upload_file
 
 
 def validation(self, phone):
@@ -69,3 +69,22 @@ def validation(self, phone):
         self.cover_letter = self.cover_letter.capitalize()
     if(self.n != None):
         self.n = self.n.capitalize()
+
+def issues_raised(self,action):
+    total_issues=len(frappe.db.get_all("Issue", filters={'project':self.project}))
+    project_doc = frappe.get_doc('Project',self.project)
+    project_doc.update({'total_issues_raised': total_issues})
+    project_doc.save()
+def create_task(self,action):
+    new=frappe.get_doc({'doctype':'Task','subject': self.subject,'status': self.status,'project':self.project,'priority':self.priority,'issue':self.name,'description':self.description})
+    new.insert()
+    new.save()
+    
+    if len(self.ts_attachments)>0 :
+        for i in range (len(self.ts_attachments)):
+            new.update({'ts_attachments': self.ts_attachments[i].ts_attachment})
+            new.save()
+    frappe.db.commit()
+    
+
+
