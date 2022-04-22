@@ -56,7 +56,7 @@ def get(filters):
 							actual += time["actual_time_taken_in_hours"]
 						total_expected += expected
 						total_actual += actual
-						hrs_list.append(str(expected) + " / " + str(actual))
+						hrs_list.append(str(actual) + " / " + str(expected))
 					final_dict['total_development_hours'] = hrs_list[0]
 					final_dict['total_implementation_hours'] = hrs_list[1]
 					final_dict['total_fullflow_testing_hours'] = hrs_list[2]
@@ -110,7 +110,7 @@ def get(filters):
 							actual += time["actual_time_taken_in_hours"]
 						total_expected += expected
 						total_actual += actual
-						hrs_list.append(str(expected) + " / " + str(actual))
+						hrs_list.append(str(actual) + " / " + str(expected))
 					final_dict['total_development_hours'] = hrs_list[0]
 					final_dict['total_implementation_hours'] = hrs_list[1]
 					final_dict['total_fullflow_testing_hours'] = hrs_list[2]
@@ -127,23 +127,23 @@ def get(filters):
 def get_columns(filters):
 	columns = [
 		_("Project")+":Link/Project:100",
-		_("Client")+":Data:100",
-		_("Project Status")+":Data:100",
-		_("Phase")+":Int:60",
-		_("CI")+":Data:100",
+		_("Client")+":Data:150",
+		_("Project Status")+":Data:150",
+		_("Phase")+":Int:100",
+		_("CI")+":Data:200",
 		_("Start Date")+":Data:100",
 		_("End Date")+":Date:100",
 		_("Phase Status")+":Data:100",
-		_("Total Issues Raised")+":Int:100",
-		_("Total Development Hours")+":Data:100",
-		_("Total Implementation Hours")+":Data:100",
-		_("Total Fullflow Testing Hours")+":Data:100",
-		_("Total Demo Hours")+":Data:100",
-		_("Total Development Testing Hours")+":Data:100",
-		_("Total Bug Fixing Hours")+":Data:100",
-		_("Total Fullflow Checking Hours")+":Data:100",
-		_("Total Expected Hours")+":Data:100",
-		_("Total Actual Hours")+":Data:100",
-		_("Total Exceeded Hours")+":Data:100",
+		_("Total Issues Raised")+":Int:150",
+		_("Total Development Hours")+":Data:200",
+		_("Total Implementation Hours")+":Data:200",
+		_("Total Fullflow Testing Hours")+":Data:200",
+		_("Total Demo Hours")+":Data:200",
+		_("Total Development Testing Hours")+":Data:200",
+		_("Total Bug Fixing Hours")+":Data:200",
+		_("Total Fullflow Checking Hours")+":Data:200",
+		_("Total Expected Hours")+":Data:200",
+		_("Total Actual Hours")+":Data:200",
+		_("Total Exceeded Hours")+":Data:200",
 	]
 	return columns

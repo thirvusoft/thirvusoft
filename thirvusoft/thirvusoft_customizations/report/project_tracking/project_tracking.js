@@ -24,7 +24,7 @@ frappe.query_reports["Project Tracking"] = {
             "fieldname": "phase",
             "label": __("Phase"),
             "fieldtype": "Select",
-			"options":["",1,2,3,4,5]
+			"options":["",1,2,3,4,5,6]
         },
         {
             "fieldname": "phase_status",
