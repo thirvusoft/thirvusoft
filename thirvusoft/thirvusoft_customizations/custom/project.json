@@ -414,6 +414,31 @@
   }
  ],
  "doctype": "Project",
- "property_setters": [],
+ "property_setters": [
+  {
+   "_assign": null,
+   "_comments": null,
+   "_liked_by": null,
+   "_user_tags": null,
+   "creation": "2022-01-20 17:38:48.910678",
+   "default_value": null,
+   "doc_type": "Project",
+   "docstatus": 0,
+   "doctype_or_field": "DocField",
+   "field_name": "naming_series",
+   "idx": 0,
+   "modified": "2022-01-20 17:38:48.910678",
+   "modified_by": "Administrator",
+   "name": "Project-naming_series-options",
+   "owner": "Administrator",
+   "parent": null,
+   "parentfield": null,
+   "parenttype": null,
+   "property": "options",
+   "property_type": "Text",
+   "row_name": null,
+   "value": "PROJ-.####"
+  }
+ ],
  "sync_on_migrate": 1
 }
