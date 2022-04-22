@@ -48,12 +48,12 @@ def get(filters):
 					total_actual = 0
 					project_on_list = ["Development","Implementation","Full-flow Testing","Demo","Development Testing","Bug Fixing","Full-flow Checking"]
 					for lis in project_on_list:
-						task = frappe.get_all("Task",fields = ["expected_time","actual_time_taken_in_hours"],filters = {"project":project, "phase":tabphase.phase,"project_on": lis})
+						task = frappe.get_all("Task",fields = ["expected_time","actual_time"],filters = {"project":project, "phase":tabphase.phase,"project_on": lis})
 						expected = 0
 						actual = 0
 						for time in task:
 							expected += time["expected_time"]
-							actual += time["actual_time_taken_in_hours"]
+							actual += time["actual_time"]
 						total_expected += expected
 						total_actual += actual
 						hrs_list.append(str(actual) + " / " + str(expected))
@@ -102,12 +102,12 @@ def get(filters):
 					total_actual = 0
 					project_on_list = ["Development","Implementation","Full-flow Testing","Demo","Development Testing","Bug Fixing","Full-flow Checking"]
 					for lis in project_on_list:
-						task = frappe.get_all("Task",fields = ["expected_time","actual_time_taken_in_hours"],filters = {"project":project, "phase":tabphase.phase,"project_on": lis})
+						task = frappe.get_all("Task",fields = ["expected_time","actual_time"],filters = {"project":project, "phase":tabphase.phase,"project_on": lis})
 						expected = 0
 						actual = 0
 						for time in task:
 							expected += time["expected_time"]
-							actual += time["actual_time_taken_in_hours"]
+							actual += time["actual_time"]
 						total_expected += expected
 						total_actual += actual
 						hrs_list.append(str(actual) + " / " + str(expected))
@@ -129,12 +129,12 @@ def get_columns(filters):
 		_("Project")+":Link/Project:100",
 		_("Client")+":Data:150",
 		_("Project Status")+":Data:150",
-		_("Phase")+":Int:100",
+		_("Phase")+":Data:100",
 		_("CI")+":Data:200",
 		_("Start Date")+":Data:100",
 		_("End Date")+":Date:100",
 		_("Phase Status")+":Data:100",
-		_("Total Issues Raised")+":Int:150",
+		_("Total Issues Raised")+":Data:150",
 		_("Total Development Hours")+":Data:200",
 		_("Total Implementation Hours")+":Data:200",
 		_("Total Fullflow Testing Hours")+":Data:200",
@@ -142,8 +142,8 @@ def get_columns(filters):
 		_("Total Development Testing Hours")+":Data:200",
 		_("Total Bug Fixing Hours")+":Data:200",
 		_("Total Fullflow Checking Hours")+":Data:200",
-		_("Total Expected Hours")+":Data:200",
-		_("Total Actual Hours")+":Data:200",
-		_("Total Exceeded Hours")+":Data:200",
+		_("Total Expected Hours")+":Float:200",
+		_("Total Actual Hours")+":Float:200",
+		_("Total Exceeded Hours")+":Float:200",
 	]
 	return columns
