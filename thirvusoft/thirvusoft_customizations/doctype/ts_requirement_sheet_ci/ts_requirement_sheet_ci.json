@@ -1,0 +1,117 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-04-27 17:12:58.961529",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ts_project",
+  "ts_department",
+  "ts_assigend_member",
+  "ts_requriement",
+  "ts_expected_hours",
+  "ts_expected_start_date",
+  "ts_expected_end_date",
+  "ts_required_nature_date",
+  "ts_priority",
+  "ts_planned_commitment_date"
+ ],
+ "fields": [
+  {
+   "columns": 1,
+   "fieldname": "ts_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "TS Department",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_assigend_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigend Member",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_requriement",
+   "fieldtype": "Long Text",
+   "in_list_view": 1,
+   "label": "Requirement",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_expected_hours",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Expected Hours",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_expected_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected Start Date",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_expected_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected End Date",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_planned_commitment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Planned Commitment Date",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "\nLow\nMedium\nHigh\nUrgent",
+   "reqd": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_required_nature_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required Nature Date",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-04-27 18:16:57.641765",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Requirement Sheet CI",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
