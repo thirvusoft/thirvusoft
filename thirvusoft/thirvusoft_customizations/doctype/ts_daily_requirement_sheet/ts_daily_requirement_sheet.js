@@ -3,7 +3,6 @@
 
 frappe.ui.form.on('TS Daily Requirement Sheet', {
 	ts_add_requirement: function(frm,cdt,cdn) {
-		console.log("hiiii")
 		var d = new frappe.ui.Dialog({
 			title: "Add Requirements........",
 			fields: [
