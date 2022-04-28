@@ -9,7 +9,7 @@ frappe.ui.form.on('TS Daily Requirement Sheet', {
 			fields: [
 				{label:'Project',fieldname:'ts_project',fieldtype:'Link',options: 'Project',reqd:1},
 				{fieldtype:'Column Break'},
-				{label:'Department',fieldname:'ts_department',fieldtype:'Link',options: 'TS Department',reqd:1},
+				{label:'Department',fieldname:'ts_department',fieldtype:'Link',options: 'Department',reqd:1},
 				{fieldtype:'Column Break'},
 				{label:'Assigend Member',fieldname:'ts_assigend_member',fieldtype:'Link',options:"User",reqd:1},
 				{fieldtype:'Section Break'},
