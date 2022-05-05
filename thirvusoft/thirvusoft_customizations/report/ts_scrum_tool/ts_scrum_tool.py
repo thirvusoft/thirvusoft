@@ -34,8 +34,13 @@ def execute(filters=None):
 def get_columns():
 	columns = [
 		_("Task ID") + ":Link/Task:180",
-		_("Employee") + ":Data/Employee:180",
-		_("Employee Name") + ":Data/Employee:180",
+		_("Employee") + ":Link/Employee:280",
+		{
+			"fieldname":"employee_name",
+			"fieldtype": "Data",
+			"hidden": 1,
+			
+		},
 		_("CI") + ":Data/Employee:180",
 		_("Task Status") + ":Data/Task:180",
 		_("Reason") + ":Data:500",
