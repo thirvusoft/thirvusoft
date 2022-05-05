@@ -26,7 +26,12 @@ frappe.ui.form.on('TS Requirement Sheet CI', {
 		}),
 		frappe.call({
 			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.employee_role",
-			args:{ts_user,ts_data}
+			args:{ts_user,ts_data},
+			callback(ts_r){
+				if(ts_r.message===0){
+					frappe.show_alert({ message: __('Task Created'), indicator: 'green' });
+				}
+			}
 		})
 	}
  })
@@ -84,7 +89,7 @@ frappe.ui.form.on('TS Requirement Sheet CI', {
 					args:{ts_user,ts_value},
 					callback(ts_r){
 						if(ts_r.message){
-							frappe.model.set_value(child.doctype, child.name,"ts_assigned_ci","HR-EMP-00001")
+							frappe.model.set_value(child.doctype, child.name,"ts_assinged_ci",ts_r.message)
 						}
 					}
 				})

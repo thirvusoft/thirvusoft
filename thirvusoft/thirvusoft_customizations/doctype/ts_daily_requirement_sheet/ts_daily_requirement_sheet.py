@@ -53,3 +53,4 @@ def employee_role(ts_user,ts_data):
            })
            ts_new_task.insert()
            ts_new_task.save()
+           return 0
