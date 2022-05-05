@@ -6,16 +6,39 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "ts_subject",
+  "column_break_1",
   "ts_project",
+  "column_break_2",
   "ts_department",
+  "column_break_4",
   "ts_assigend_member",
-  "ts_requriement",
+  "column_break_5",
+  "ts_assigend_member_name",
+  "section_break_6",
   "ts_expected_hours",
+  "column_break_8",
   "ts_expected_start_date",
+  "column_break_10",
   "ts_expected_end_date",
+  "section_break_12",
   "ts_required_nature_date",
+  "column_break_14",
   "ts_priority",
-  "ts_planned_commitment_date"
+  "column_break_16",
+  "ts_planned_commitment_date",
+  "column_break_18",
+  "ts_requriement",
+  "section_break_20",
+  "ts_assinged_ci",
+  "column_break_22",
+  "ts_assinged_ci_name",
+  "column_break_32",
+  "ts_assing_task",
+  "column_break_23",
+  "ts_task_assigned_by",
+  "column_break_30",
+  "ts_tech_lead_name"
  ],
  "fields": [
   {
@@ -42,7 +65,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Assigend Member",
-   "options": "User",
+   "options": "Employee",
    "reqd": 1
   },
   {
@@ -101,12 +124,127 @@
    "in_list_view": 1,
    "label": "Required Nature Date",
    "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "bold": 1,
+   "depends_on": "eval:!doc.ts_tech_lead_name",
+   "fieldname": "ts_assing_task",
+   "fieldtype": "Button",
+   "label": "Assign Task",
+   "width": "100"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_10",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "ts_subject",
+   "fieldtype": "Data",
+   "label": "Subject",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ts_assinged_ci",
+   "fieldtype": "Link",
+   "label": "Assinged CI",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "ts_assinged_ci.employee_name",
+   "fieldname": "ts_assinged_ci_name",
+   "fieldtype": "Data",
+   "label": "Assigned CI Name",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ts_task_assigned_by",
+   "fieldtype": "Link",
+   "label": "Task Assigned By",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_30",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "ts_tech_lead_name",
+   "fieldtype": "Data",
+   "label": "Tech Lead Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "ts_assigend_member.employee_name",
+   "fieldname": "ts_assigend_member_name",
+   "fieldtype": "Data",
+   "label": "Assigend Member Name",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-04-28 10:13:01.237031",
+ "modified": "2022-05-04 17:38:36.205872",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Requirement Sheet CI",
