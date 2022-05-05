@@ -2,7 +2,7 @@
  "actions": [],
  "allow_rename": 1,
  "autoname": "DRS.#####",
- "creation": "2022-04-27 17:03:42.029158",
+ "creation": "2022-05-04 15:47:12.597770",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -14,6 +14,7 @@
  ],
  "fields": [
   {
+   "depends_on": "eval:doc.docstatus!=1",
    "fieldname": "ts_add_requirement",
    "fieldtype": "Button",
    "label": "Add Requirement"
@@ -37,12 +38,21 @@
    "options": "TS Daily Requirement Sheet",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "TS Daily Requirement Sheet",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-04-28 09:28:43.038035",
+ "modified": "2022-05-04 16:25:53.046792",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",
@@ -58,6 +68,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],
