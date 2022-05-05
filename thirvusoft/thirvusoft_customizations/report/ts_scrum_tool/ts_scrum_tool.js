@@ -22,7 +22,7 @@ frappe.query_reports["TS Scrum Tool"] = {
 			"fieldname":"status",
 			"label": __("Task Status"),
 			"fieldtype": "Select",
-			"options": ["","Pending Review","Hold","Completed","Cancelled"],
+			"options": ["","Hold","Open","Working","PR Opened","PR Merged","PR Conflicts","PR Closed","Deployed to Production","Development Testing Started","Development Testing Ended","CI Verified","Client Satisfied","Overdue","Completed","Cancelled"],
 			"width": "100"
 		},
 		{
