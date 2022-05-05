@@ -4,7 +4,7 @@
 
 import frappe
 from frappe import _
-
+from frappe.utils import nowdate
 def execute(filters=None):
 	from_date = filters.get("from_date")
 	to_date = filters.get("to_date")
@@ -47,4 +47,21 @@ def get_columns():
 		]
 	
 	return columns
+
+@frappe.whitelist()
+def task_status(task_name,task_status):
+    task_doc= frappe.get_doc('Task',task_name)
+    if (task_status == "Completed"):
+        task_doc.update({
+            'status':task_status,
+            'completed_on':nowdate()
+        })
+        task_doc.save()
+        frappe.db.commit()
+    else:
+        task_doc.update({
+                'status':task_status
+            })
+        task_doc.save()
+        frappe.db.commit()
 		

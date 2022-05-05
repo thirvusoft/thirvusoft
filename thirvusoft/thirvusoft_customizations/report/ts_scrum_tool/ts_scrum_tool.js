@@ -42,7 +42,7 @@ frappe.query_reports["TS Scrum Tool"] = {
     },
 	onload: function() {
 		frappe.query_report.page.add_inner_button(__("Update Status"), function() {
-				var d = new frappe.ui.Dialog({
+				var button = new frappe.ui.Dialog({
 					size:"large",
 					title: "Action",
 					fields: [
@@ -52,12 +52,12 @@ frappe.query_reports["TS Scrum Tool"] = {
 					primary_action:function(data){
 						var status = data.task_status
 						change_status(status)
-						d.hide()
+						button.hide()
 						frappe.msgprint("Status Updated");
 					}
 					
 						})
-						d.show()	
+						button.show()	
 		});
 		
 	}
@@ -72,13 +72,12 @@ var change_status = function(status){
 					task_list.push(checked_rows[i].task_id)
 					
 				}
-				console.log(task_list)
 				for(let i in task_list){
 						frappe.call({
-							method: "thirvusoft.thirvusoft_customizations.custom.python.reports.task_status",
+							method: "thirvusoft.thirvusoft_customizations.report.ts_scrum_tool.ts_scrum_tool.task_status",
 							args: {
-								name: task_list[i],
-								value: status
+								task_name: task_list[i],
+								task_status: status
 							},
 						});
 				}	
