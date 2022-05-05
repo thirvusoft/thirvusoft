@@ -26,7 +26,8 @@ def tech_lead_name_finder(ts_user,ts_value):
 
  
  
- 
+from frappe.utils import getdate
+from datetime import timedelta
 @frappe.whitelist()
 def employee_role(ts_user,ts_data):
    ts_data=eval(ts_data)
@@ -34,19 +35,21 @@ def employee_role(ts_user,ts_data):
    if(ts_employee_user_id):
        ts_employee_user_id=ts_employee_user_id[0]
        if(ts_employee_user_id[0]=="Tech Lead"):
+           ts_expected_start_date=getdate(ts_data["ts_expected_start_date"])
+           ts_expected_end_date=ts_expected_start_date+timedelta(days=7)
            ts_new_task=frappe.get_doc({
                "doctype":"Task",
                "subject":ts_data["ts_subject"],
                "project":ts_data["ts_project"],
                "priority":ts_data["ts_priority"],
                "assigned_tech_lead":ts_data["ts_task_assigned_by"],
-               "assigned_ci":ts_data["ts_assinged_ci"],
-               "assigned_team_member":ts_data["ts_assigend_member"],
+               "assigned_ci":ts_data["ts_assigned_crm_member"],
+               "assigned_team_member":ts_data["ts_assigned_member"],
                "ts_assigned_tech_lead_name":ts_data["ts_tech_lead_name"],
-               "ts_assigned_ci_name":ts_data["ts_assinged_ci_name"],
-               "ts_assigned_team_member":ts_data["ts_assigend_member_name"],
+               "ts_assigned_ci_name":ts_data["ts_assigned_crm_name"],
+               "ts_assigned_team_member":ts_data["ts_assigned_member_name"],
                "exp_start_date":ts_data["ts_expected_start_date"],
-               "exp_end_date":ts_data["ts_expected_end_date"],
+               "exp_end_date":ts_expected_end_date,
                "expected_time":ts_data["ts_expected_hours"],
                "description":ts_data["ts_requriement"],
                "department":ts_data["ts_department"],

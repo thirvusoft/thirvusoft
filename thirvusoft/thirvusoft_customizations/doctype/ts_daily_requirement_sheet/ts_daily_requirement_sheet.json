@@ -28,7 +28,7 @@
    "fieldname": "ts_requirement",
    "fieldtype": "Table",
    "label": "Requirement",
-   "options": "TS Requirement Sheet CI"
+   "options": "TS Child Requirement Sheet"
   },
   {
    "fieldname": "amended_from",
@@ -52,7 +52,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-04 16:25:53.046792",
+ "modified": "2022-05-05 16:43:17.409335",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",
