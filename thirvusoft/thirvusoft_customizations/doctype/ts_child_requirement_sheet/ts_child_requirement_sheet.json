@@ -12,27 +12,25 @@
   "column_break_2",
   "ts_department",
   "column_break_4",
-  "ts_assigend_member",
+  "ts_assigned_member",
   "column_break_5",
-  "ts_assigend_member_name",
+  "ts_assigned_member_name",
   "section_break_6",
-  "ts_expected_hours",
-  "column_break_8",
   "ts_expected_start_date",
-  "column_break_10",
-  "ts_expected_end_date",
+  "column_break_8",
+  "ts_expected_hours",
   "section_break_12",
-  "ts_required_nature_date",
+  "ts_freezing_date",
   "column_break_14",
-  "ts_priority",
-  "column_break_16",
   "ts_planned_commitment_date",
+  "column_break_16",
+  "ts_priority",
   "column_break_18",
   "ts_requriement",
   "section_break_20",
-  "ts_assinged_ci",
+  "ts_assigned_crm_member",
   "column_break_22",
-  "ts_assinged_ci_name",
+  "ts_assigned_crm_name",
   "column_break_32",
   "ts_assing_task",
   "column_break_23",
@@ -61,15 +59,6 @@
   },
   {
    "columns": 1,
-   "fieldname": "ts_assigend_member",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Assigend Member",
-   "options": "Employee",
-   "reqd": 1
-  },
-  {
-   "columns": 1,
    "fieldname": "ts_requriement",
    "fieldtype": "Long Text",
    "in_list_view": 1,
@@ -77,6 +66,7 @@
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "columns": 1,
    "fieldname": "ts_expected_hours",
    "fieldtype": "Float",
@@ -85,19 +75,12 @@
    "reqd": 1
   },
   {
+   "allow_on_submit": 1,
    "columns": 1,
    "fieldname": "ts_expected_start_date",
    "fieldtype": "Date",
    "in_list_view": 1,
    "label": "Expected Start Date",
-   "reqd": 1
-  },
-  {
-   "columns": 1,
-   "fieldname": "ts_expected_end_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Expected End Date",
    "reqd": 1
   },
   {
@@ -115,14 +98,6 @@
    "in_list_view": 1,
    "label": "Priority",
    "options": "\nLow\nMedium\nHigh\nUrgent",
-   "reqd": 1
-  },
-  {
-   "columns": 1,
-   "fieldname": "ts_required_nature_date",
-   "fieldtype": "Date",
-   "in_list_view": 1,
-   "label": "Required Nature Date",
    "reqd": 1
   },
   {
@@ -148,10 +123,6 @@
   },
   {
    "fieldname": "column_break_8",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_10",
    "fieldtype": "Column Break"
   },
   {
@@ -193,23 +164,8 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "ts_assinged_ci",
-   "fieldtype": "Link",
-   "label": "Assinged CI",
-   "options": "Employee",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
    "fieldname": "column_break_5",
    "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "ts_assinged_ci.employee_name",
-   "fieldname": "ts_assinged_ci_name",
-   "fieldtype": "Data",
-   "label": "Assigned CI Name",
-   "read_only": 1
   },
   {
    "allow_on_submit": 1,
@@ -235,20 +191,52 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
+   "fieldname": "ts_assigned_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned Team Member",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
    "fetch_from": "ts_assigend_member.employee_name",
-   "fieldname": "ts_assigend_member_name",
+   "fieldname": "ts_assigned_member_name",
    "fieldtype": "Data",
-   "label": "Assigend Member Name",
+   "label": "Assigned Member Name",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_freezing_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Freezing DateRequired Nature Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ts_assigned_crm_member",
+   "fieldtype": "Link",
+   "label": "Assigned CRM Member",
+   "options": "Employee",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "ts_assinged_ci.employee_name",
+   "fieldname": "ts_assigned_crm_name",
+   "fieldtype": "Data",
+   "label": "Assigned CRM Name",
    "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-05-05 09:22:01.507917",
+ "modified": "2022-05-05 16:54:57.450655",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
- "name": "TS Requirement Sheet CI",
+ "name": "TS Child Requirement Sheet",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",
