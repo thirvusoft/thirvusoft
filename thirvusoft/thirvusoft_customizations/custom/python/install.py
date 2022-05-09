@@ -6,6 +6,7 @@ def after_install():
     create_state()
     create_action()
     create_jobApplicant_workflow()
+
 def create_custom_role():
     existing_doc = frappe.db.get_value('Role', {'role_name': 'Receptionist'}, 'name')
     if not existing_doc:

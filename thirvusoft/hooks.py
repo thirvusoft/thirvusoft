@@ -63,9 +63,9 @@ doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.
 # before_install = "thirvusoft.install.before_install"
 # after_install = "thirvusoft.install.after_install"
 # after_install= {"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator"}
-after_install="thirvusoft.thirvusoft_customizations.custom.python.install.after_install"
-after_install="thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task"
-after_install="thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue"
+after_install=["thirvusoft.thirvusoft_customizations.custom.python.install.after_install",
+"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task",
+"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue"]
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
@@ -92,10 +92,10 @@ doc_events = {
 	"Job Applicant": {
 		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
 	},
-	"Issue": {
-		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
-		"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
-	}
+	# "Issue": {
+	# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
+	# 	"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
+	# }
 }
 override_doctype_class = {
 	"Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip"
