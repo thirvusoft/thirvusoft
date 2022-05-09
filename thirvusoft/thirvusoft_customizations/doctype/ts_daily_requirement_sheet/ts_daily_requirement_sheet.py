@@ -3,6 +3,7 @@
  
  
 from frappe.model.document import Document
+from frappe.desk.form import assign_to
  
 class TSDailyRequirementSheet(Document):
    pass
@@ -56,4 +57,55 @@ def employee_role(ts_user,ts_data):
            })
            ts_new_task.insert()
            ts_new_task.save()
+
+           frappe.errprint(ts_new_task.assigned_ci)
+           employee = frappe.get_doc("Employee",ts_new_task.assigned_ci)
+           ci_email = employee.user_id
+         
+
+           employee1= frappe.get_doc("Employee",ts_new_task.assigned_tech_lead)
+           tech_email = employee1.user_id
+          
+           
+           employee2= frappe.get_doc("Employee",ts_new_task.assigned_team_member)
+           team_email = employee2.user_id
+           
+           doc=frappe.new_doc("ToDo")
+           doc.update({
+               "owner" : team_email,
+               "description" :  team_email,
+               "reference_type" : "Task",
+               "reference_name" : ts_new_task.name,
+               "role" : "All",
+               "assigned_by" : tech_email,
+               
+           })
+           doc.insert(ignore_permissions=True)
+
+
+           doc1=frappe.new_doc("ToDo")
+           doc1.update({
+               "owner" : tech_email,
+               "description" : tech_email,
+               "reference_type" : "Task",
+               "reference_name" : ts_new_task.name,
+               "role" : "All",
+               "assigned_by" : tech_email,
+               
+           })
+           doc1.insert(ignore_permissions=True)
+           
+
+           doc2=frappe.new_doc("ToDo")
+           doc2.update({
+               "owner" :  ci_email,
+               "description" : ci_email,
+               "reference_type" : "Task",
+               "reference_name" : ts_new_task.name,
+               "role" : "All",
+               "assigned_by" : tech_email,
+               
+           })
+           doc2.insert(ignore_permissions=True)
+
            return 0
