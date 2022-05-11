@@ -17,11 +17,6 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 							message:"Not Permitted"
 						})
 					}
-					else{
-						frappe.model.set_value(cdt,cdn, "ts_task_assigned_by", ts_r.message[0])
-						frappe.model.set_value(cdt,cdn, "ts_tech_lead_name", ts_r.message[1])
-						frm.save_or_update();
-					}
 				}
 			}
 		}),
@@ -29,7 +24,16 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.employee_role",
 			args:{ts_user,ts_data},
 			callback(ts_r){
-				if(ts_r.message===0){
+				if(ts_r.message===1){
+					frappe.throw({
+						title:"Message",
+						message:"Scurm Master Role Is Not Assigned"
+					})
+				}
+				else{
+					frappe.model.set_value(cdt,cdn, "ts_task_assigned_by", ts_r.message[0])
+					frappe.model.set_value(cdt,cdn, "ts_tech_lead_name", ts_r.message[1])
+					frm.save_or_update();
 					frappe.show_alert({ message: __('Task Created'), indicator: 'green' });
 				}
 			}
@@ -99,6 +103,23 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 			}
 		})
 		d.show()
+	},
+	onload:function(frm,cdt,cdn){
+		var ts_user=frappe.user.name
+		var ts_value=1
+		frappe.call({
+			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.tech_lead_name_finder",
+			args:{ts_user,ts_value},
+			callback(ts_r){
+				if(ts_r.message){
+					frm.set_query("ts_project","ts_requirement", function() {
+						return {
+							filters: {'ts_assigned_crm' :ts_r.message}
+						}
+					})
+				}
+			}
+		})
 	}
  })
  
