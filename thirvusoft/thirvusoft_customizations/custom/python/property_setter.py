@@ -8,7 +8,7 @@ def property_creator_task():
         'property':"options",
         "property_type":"Select",
         'field_name':"status",
-        "value":"Hold\nOpen\nWorking\nPR Opened\nPR Merged\nPR Conflicts\nPR Closed\nDeployed to Production\nDevelopment Testing Started\nDevelopment Testing Ended\nCI Verified\nClient Satisfied\nOverdue\nCompleted\nCanceled"
+        "value":"Hold\nOpen\nWorking\nPR Opened\nPR Verified\nPR Merged\nPR Conflicts\nPR Closed\nDeployed to Production\nDevelopment Testing Started\nDevelopment Testing Ended\nCI Verified\nClient Satisfied\nOverdue\nCompleted\nCancelled"
     })
     ts_new_property_task.insert()
     ts_new_property_task.save()

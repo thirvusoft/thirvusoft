@@ -32,7 +32,8 @@ app_license = "MIT"
 
 # include js in doctype views
 doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
-				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js"
+				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
+				"Project":"thirvusoft_customizations/custom/js/project.js"
 			}
 doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
 
