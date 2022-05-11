@@ -73,3 +73,8 @@ frappe.ui.form.on("Task",{
         }
     }
 })
+frappe.ui.form.on('Task', {
+          ts_create_pr: function(frm, cdt, cdn) {
+                    window.open(frm.doc.ts_github_repo_link+'/compare/');
+          }
+});
