@@ -11,6 +11,7 @@ class TSDailyRequirementSheet(Document):
 import frappe
 @frappe.whitelist()
 def tech_lead_name_finder(ts_user,ts_value):
+    # print("1234")
     ts_employee_user=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name',"designation"])
     if(ts_employee_user):
         ts_employee_user=ts_employee_user[0]
@@ -34,7 +35,6 @@ def employee_role(ts_user,ts_data):
    ts_data=eval(ts_data)
    ts_employee_user_id=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name',"designation"])
    if(ts_employee_user_id):
-<<<<<<< HEAD
         ts_employee_user_id=ts_employee_user_id[0]
         if(ts_employee_user_id[2]=="Tech Lead"):
             ts_user_details=frappe.db.get_values("User",filters={"role_profile_name":"Scurm Master"},fieldname=["name"])
@@ -71,9 +71,8 @@ def employee_role(ts_user,ts_data):
             else:
                 return 1
         
-=======
-       ts_employee_user_id=ts_employee_user_id[0]
-       if(ts_employee_user_id[0]=="Tech Lead"):
+        ts_employee_user_id=ts_employee_user_id[0]
+        if(ts_employee_user_id[0]=="Tech Lead"):
            ts_expected_start_date=getdate(ts_data["ts_expected_start_date"])
            ts_expected_end_date=ts_expected_start_date+timedelta(days=7)
            ts_new_task=frappe.get_doc({
@@ -102,9 +101,9 @@ def employee_role(ts_user,ts_data):
          
 
            employee1= frappe.get_doc("Employee",ts_new_task.assigned_tech_lead)
-           tech_email = employee1.user_id
-          
-           
+           tech_email = employee1.user_iddoc2.update({
+        #        "owner" :  ci_email,
+           })
            employee2= frappe.get_doc("Employee",ts_new_task.assigned_team_member)
            team_email = employee2.user_id
            
@@ -135,6 +134,8 @@ def employee_role(ts_user,ts_data):
            
 
            doc2=frappe.new_doc("ToDo")
+        #    doc2.update({
+        #        "owner" :  ci_email,
            doc2.update({
                "owner" :  ci_email,
                "description" : ci_email,
@@ -147,4 +148,3 @@ def employee_role(ts_user,ts_data):
            doc2.insert(ignore_permissions=True)
 
            return 0
->>>>>>> 189489f0b99c69ff0e5c135dcaab6e31a9e59055
