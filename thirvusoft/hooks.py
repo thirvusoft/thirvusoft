@@ -92,6 +92,9 @@ doc_events = {
 	"Job Applicant": {
 		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
 	},
+	"Issue":{
+		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
+	}
 	# "Issue": {
 	# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
 	# 	"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
