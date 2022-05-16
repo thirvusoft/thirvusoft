@@ -8,6 +8,8 @@
  "engine": "InnoDB",
  "field_order": [
   "ts_add_requirement",
+  "ts_pending_requirements_section",
+  "ts_pending_requirement",
   "details_section",
   "ts_requirement",
   "amended_from"
@@ -20,24 +22,22 @@
    "label": "Add Requirement"
   },
   {
+   "collapsible": 1,
    "fieldname": "details_section",
    "fieldtype": "Section Break",
-   "label": "Details"
+   "label": "New Requirements"
   },
   {
    "fieldname": "ts_requirement",
    "fieldtype": "Table",
-   "label": "Requirement",
+   "label": "New Requirement",
    "options": "TS Child Requirement Sheet"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "TS Daily Requirement Sheet",
-   "print_hide": 1,
-   "read_only": 1
+   "fieldname": "ts_pending_requirement",
+   "fieldtype": "Table",
+   "label": "Pending Requirement",
+   "options": "TS Pending Task Requirement Sheet"
   },
   {
    "fieldname": "amended_from",
@@ -47,12 +47,18 @@
    "options": "TS Daily Requirement Sheet",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "ts_pending_requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Pending Requirements"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-05 16:43:17.409335",
+ "modified": "2022-05-12 14:25:13.574382",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",

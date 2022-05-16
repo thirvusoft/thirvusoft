@@ -32,6 +32,7 @@
   "column_break_22",
   "ts_assigned_crm_name",
   "column_break_32",
+  "ts_is_pending_requirement",
   "ts_assing_task",
   "column_break_23",
   "ts_task_assigned_by",
@@ -228,12 +229,19 @@
    "fieldtype": "Data",
    "label": "Assigned CRM Name",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "ts_is_pending_requirement",
+   "fieldtype": "Check",
+   "label": "Is Pending Requirement",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-05-05 16:54:57.450655",
+ "modified": "2022-05-16 11:44:08.085605",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Child Requirement Sheet",
