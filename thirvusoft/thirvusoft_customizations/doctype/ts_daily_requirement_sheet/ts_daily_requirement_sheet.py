@@ -66,8 +66,6 @@ def employee_role(ts_user,ts_data):
                 })
                 ts_new_task.insert()
                 ts_new_task.save()
-
-                frappe.errprint(ts_new_task.assigned_ci)
                 employee = frappe.get_doc("Employee",ts_new_task.assigned_ci)
                 ci_email = employee.user_id
                 

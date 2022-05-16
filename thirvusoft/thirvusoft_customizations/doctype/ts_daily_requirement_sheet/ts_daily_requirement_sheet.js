@@ -35,7 +35,7 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 					frappe.model.set_value(cdt,cdn, "ts_task_assigned_by", ts_r.message[0])
 					frappe.model.set_value(cdt,cdn, "ts_tech_lead_name", ts_r.message[1])
 					frm.save_or_update();
-					frappe.show_alert({ message: __('Task Created'), indicator: 'green' });
+			frappe.show_alert({ message:__('Task Created'), indicator:'green' });
 				}
 			}
 		})
@@ -112,7 +112,10 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.tech_lead_name_finder",
 			args:{ts_user,ts_value},
 			callback(ts_r){
-				if(ts_r.message){
+				console.log(tech_lead_name_finder)
+
+				if(ts_r.message)
+				{
 					frm.set_query("ts_project","ts_requirement", function() {
 						return {
 							filters: {'ts_assigned_crm' :ts_r.message}
