@@ -112,7 +112,6 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.tech_lead_name_finder",
 			args:{ts_user,ts_value},
 			callback(ts_r){
-				console.log(tech_lead_name_finder)
 
 				if(ts_r.message)
 				{
@@ -124,7 +123,6 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 				}
 			}
 		})
-		var ts_data=locals[cdt][cdn]
 		frappe.call({
 			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.pending_requirement_finder",
 			args:{ts_user},
@@ -133,7 +131,6 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 					var details=ts_r.message
 					for(var i=0;i<details.length;i++){
 						for(var j=0;j<details[i].length;j++){
-							console.log(details[i][j]["ts_subject"])
 							let row = frm.add_child("ts_pending_requirement");
 							row.ts_subject = details[i][j]["ts_subject"]
 							row.ts_project = details[i][j]["ts_project"]
@@ -154,6 +151,43 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 				}
 			}
 		})
+	},
+	validate:function(frm,cdt,cdn){
+		var ts_data=locals[cdt][cdn]
+		if(ts_data.ts_pending_requirement){
+			var ts_pending_table=ts_data.ts_pending_requirement
+			for(var i=0;i<ts_pending_table.length;i++){
+				if(!ts_pending_table[i].new_requirement_added_by){
+					frappe.throw({
+						title:"Message",
+						message:"Pending Requirement Not Added To New Requirement In Row : "+(i+1)
+					})
+				}
+			}
+		}
 	}
- })
+})
+frappe.ui.form.on("TS Pending Task Requirement Sheet",{
+	ts_add_to_new_requirements:function(frm,cdt,cdn){
+		var ts_data=locals[cdt][cdn]
+		let row = frm.add_child("ts_requirement");
+		row.ts_subject = ts_data.ts_subject
+		row.ts_project = ts_data.ts_project
+		row.ts_department = ts_data.ts_department
+		row.ts_assigned_member = ts_data.ts_assigned_member
+		row.ts_assigned_member_name = ts_data.ts_assigned_member_name
+		row.ts_expected_start_date = ts_data.ts_expected_start_date
+		row.ts_expected_hours = ts_data.ts_expected_hours
+		row.ts_freezing_date = ts_data.ts_freezing_date
+		row.ts_planned_commitment_date = ts_data.ts_planned_commitment_date
+		row.ts_priority = ts_data.ts_priority
+		row.ts_requriement = ts_data.ts_requriement
+		row.ts_assigned_crm_member = ts_data.ts_assigned_crm_member
+		row.ts_assigned_crm_name = ts_data.ts_assigned_crm_name
+		row.ts_is_pending_requirement=1
+		frm.refresh_field("ts_requirement");
+		frappe.model.set_value(cdt,cdn,"new_requirement_added_by",ts_data.ts_assigned_crm_member)
+		frappe.show_alert({ message:__('Added To New Requirements'), indicator:'green' });
+	}
+})
  
