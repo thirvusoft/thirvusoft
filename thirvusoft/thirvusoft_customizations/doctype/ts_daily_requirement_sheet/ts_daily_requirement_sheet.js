@@ -1,10 +1,11 @@
 // Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 // For license information, please see license.txt
- 
+var ts_child_data
 frappe.ui.form.on('TS Child Requirement Sheet', {
 	ts_assing_task:async function(frm,cdt,cdn){
 		var ts_user=frappe.user.name
 		var ts_data=locals[cdt][cdn]
+		ts_child_data=ts_data
 		var ts_value=0
 		await frappe.call({
 			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.tech_lead_name_finder",
@@ -117,6 +118,36 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 							filters: {'ts_assigned_crm' :ts_r.message}
 						}
 					})
+				}
+			}
+		})
+		var ts_data=locals[cdt][cdn]
+		frappe.call({
+			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.pending_requirement_finder",
+			args:{ts_user},
+			callback(ts_r){
+				if(ts_r.message){
+					var details=ts_r.message
+					for(var i=0;i<details.length;i++){
+						for(var j=0;j<details[i].length;j++){
+							console.log(details[i][j]["ts_subject"])
+							let row = frm.add_child("ts_pending_requirement");
+							row.ts_subject = details[i][j]["ts_subject"]
+							row.ts_project = details[i][j]["ts_project"]
+							row.ts_department = details[i][j]["ts_department"]
+							row.ts_assigned_member = details[i][j]["ts_assigned_member"]
+							row.ts_assigned_member_name = details[i][j]["ts_assigned_member_name"]
+							row.ts_expected_start_date = details[i][j]["ts_expected_start_date"]
+							row.ts_expected_hours = details[i][j]["ts_expected_hours"]
+							row.ts_freezing_date = details[i][j]["ts_freezing_date"]
+							row.ts_planned_commitment_date = details[i][j]["ts_planned_commitment_date"]
+							row.ts_priority = details[i][j]["ts_priority"]
+							row.ts_requriement = details[i][j]["ts_requriement"]
+							row.ts_assigned_crm_member = details[i][j]["ts_assigned_crm_member"]
+							row.ts_assigned_crm_name = details[i][j]["ts_assigned_crm_name"]
+							frm.refresh_field("ts_pending_requirement");
+						}
+					}
 				}
 			}
 		})
