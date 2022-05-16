@@ -1,0 +1,32 @@
+{
+ "custom_fields": [],
+ "custom_perms": [],
+ "doctype": "Job Application Experience Details",
+ "property_setters": [
+  {
+   "_assign": null,
+   "_comments": null,
+   "_liked_by": null,
+   "_user_tags": null,
+   "creation": "2022-03-09 09:09:34.887683",
+   "default_value": null,
+   "doc_type": "Job Application Experience Details",
+   "docstatus": 0,
+   "doctype_or_field": "DocField",
+   "field_name": "duration",
+   "idx": 0,
+   "modified": "2022-03-09 09:09:34.887683",
+   "modified_by": "Administrator",
+   "name": "Job Application Experience Details-duration-label",
+   "owner": "Administrator",
+   "parent": null,
+   "parentfield": null,
+   "parenttype": null,
+   "property": "label",
+   "property_type": "Data",
+   "row_name": null,
+   "value": "Duration(In Months)"
+  }
+ ],
+ "sync_on_migrate": 1
+}

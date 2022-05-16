@@ -3,6 +3,7 @@ import frappe
 def after_install():
     create_custom_role()
     create_custom_meeting_issues()
+    create_issue_type()
     create_state()
     create_action()
     create_jobApplicant_workflow()
@@ -16,14 +17,17 @@ def create_custom_role():
 def create_custom_meeting_issues():
     meetlist=["General","Scrum","Management","Wonder","Thirvu","Client","Session"]
     for row in meetlist:
-        new_doc = frappe.new_doc('TS Meeting Type')
-        new_doc.ts_meeting_type = row
-        new_doc.save()
-    issuetypelist=["Internal Server Error","Server Down","404 Page Not Found","Unable to Connect","Print Format","CI Not-Reachable"]
-    for row in issuetypelist:
-        new_doc = frappe.new_doc('Issue Type')
-        new_doc.__newname = row
-        new_doc.save()
+        if not frappe.db.exists('TS Meeting Type', row):
+            new_doc = frappe.new_doc('TS Meeting Type')
+            new_doc.ts_meeting_type = row
+            new_doc.save()
+def create_issue_type():
+    issue_type_list=["Internal Server Error","Server Down","404 Page Not Found","Unable to Connect","Print Format","CI Not-Reachable"]
+    for row in issue_type_list:
+        if not frappe.db.exists('Issue Type', row):
+            new_doc = frappe.new_doc('Issue Type')
+            new_doc.__newname = row
+            new_doc.save()
 def create_jobApplicant_workflow():
     if frappe.db.exists('Workflow', 'Job Applicant workflow'):
         frappe.delete_doc('Workflow', 'Job Applicant workflow')
