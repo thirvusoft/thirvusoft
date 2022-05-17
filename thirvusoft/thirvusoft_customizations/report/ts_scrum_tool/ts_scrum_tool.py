@@ -26,7 +26,12 @@ def execute(filters=None):
 									{0}
 								""".format(conditions))
 	data = [list(i) for i in report_data]
-	ci_name=[frappe.get_all("Employee",fields=['employee_name'],filters={'name':i[3]})[0]['employee_name'] for i in data]
+
+	ci_name = []
+	for i in data:
+		emp = frappe.get_all("Employee",fields=['employee_name'],filters={'name':i[3]})
+		if emp and emp[0]:
+			ci_name.append(emp[0]['employee_name'])
 	for i in range(len(ci_name)):data[i][3] = str(ci_name[i])
 	columns = get_columns()
 	return columns, data
