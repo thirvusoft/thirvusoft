@@ -190,4 +190,3 @@ frappe.ui.form.on("TS Pending Task Requirement Sheet",{
 		frappe.show_alert({ message:__('Added To New Requirements'), indicator:'green' });
 	}
 })
- 
