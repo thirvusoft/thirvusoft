@@ -1431,7 +1431,7 @@ def salaryslip(doc):
 		def __init__(self,**doc):
 			self.__dict__.update(doc)
 	doc=Exp(**doc)
-	expense_claim=frappe.db.get_all("Expense Claim Detail",fields=['expense_type','amount','sanctioned_amount','parent'], filters={'docstatus':0,'expense_date':['between',(doc.start_date,doc.end_date)]})
+	expense_claim=frappe.db.get_all("Expense Claim Detail",fields=['expense_type','amount','sanctioned_amount','parent'], filters={'docstatus':1,'expense_date':['between',(doc.start_date,doc.end_date)]})
 	match=[i['parent'] for i in expense_claim if(frappe.get_value('Expense Claim',i['parent'],'employee') == doc.employee)]
 	sum=[]
 	types=[]
