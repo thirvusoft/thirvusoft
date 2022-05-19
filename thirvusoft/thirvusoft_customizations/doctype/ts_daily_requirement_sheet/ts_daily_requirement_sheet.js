@@ -67,7 +67,7 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 				{fieldtype:'Column Break'},
 				{label:'Priority',fieldname:'ts_priority',fieldtype: 'Select',options:["","Low","Medium","High","Urgent"],reqd:1},
 				{fieldtype:'Section Break'},
-				{label:'Requirement',fieldname:'ts_requriement',fieldtype:'Long Text',reqd:1},
+				{label:'Requirement',fieldname:'ts_requriement',fieldtype:'Text Editor',reqd:1},
 			],
 			primary_action_label: "➕",
 			primary_action:function(data){
