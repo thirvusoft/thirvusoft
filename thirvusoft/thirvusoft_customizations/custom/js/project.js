@@ -1,8 +1,9 @@
 frappe.ui.form.on("Project",{
-    onload:function(frm,cdt,cdn){
+    setup:function(frm,cdt,cdn){
+        var ts_filter=["Product Manager","Tech Lead"]
     frm.set_query("ts_assigned_crm", function() {
         return {
-            filters: {'designation' :"Customer Relationship Manager"}
+            filters: {'designation': ["in", ts_filter]}
         }
     })
     }
