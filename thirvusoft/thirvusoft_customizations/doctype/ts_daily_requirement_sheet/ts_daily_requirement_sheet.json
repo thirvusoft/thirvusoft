@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "DRS.#####",
+ "creation": "2022-05-04 15:47:12.597770",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ts_add_requirement",
+  "ts_pending_requirements_section",
+  "ts_pending_requirement",
+  "details_section",
+  "ts_requirement",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "depends_on": "eval:doc.docstatus!=1",
+   "fieldname": "ts_add_requirement",
+   "fieldtype": "Button",
+   "label": "Add Requirement"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "New Requirements"
+  },
+  {
+   "fieldname": "ts_requirement",
+   "fieldtype": "Table",
+   "label": "Requirement",
+   "options": "TS Daily Requirement Sheet Details"
+  },
+  {
+   "fieldname": "ts_pending_requirement",
+   "fieldtype": "Table",
+   "label": "Pending Requirement",
+   "options": "TS Pending Task Requirement Sheet"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "TS Daily Requirement Sheet",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "ts_pending_requirements_section",
+   "fieldtype": "Section Break",
+   "label": "Pending Requirements"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-05-16 21:52:21.435000",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Daily Requirement Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

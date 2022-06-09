@@ -31,8 +31,12 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
+				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
+				"Project":"thirvusoft_customizations/custom/js/project.js"	
+			}
+doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
+
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -58,7 +62,10 @@ app_license = "MIT"
 
 # before_install = "thirvusoft.install.before_install"
 # after_install = "thirvusoft.install.after_install"
-
+# after_install= {"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator"}
+after_install=["thirvusoft.thirvusoft_customizations.custom.python.install.after_install",
+"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task",
+"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue"]
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
@@ -81,22 +88,25 @@ app_license = "MIT"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+doc_events = {
+	"Job Applicant": {
+		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
+	},
+	"Issue":{
+		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
+	}
+	# "Issue": {
+	# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
+	# 	"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
+	# }
+}
+override_doctype_class = {
+	"Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip"
+}
 
 # Document Events
 # ---------------
 # Hook on document methods and events
-
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-#	}
-# }
-
 # Scheduled Tasks
 # ---------------
 

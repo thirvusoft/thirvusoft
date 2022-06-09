@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-20 23:30:22.672793",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "designation",
+  "company",
+  "duration",
+  "salary",
+  "reason_for_relieving"
+ ],
+ "fields": [
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Designation"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Company"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Duration"
+  },
+  {
+   "fieldname": "salary",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Salary"
+  },
+  {
+   "fieldname": "reason_for_relieving",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Reason for Relieving"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-02-20 23:32:16.060349",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "Job Application Experience Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

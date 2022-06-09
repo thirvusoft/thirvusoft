@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-02-20 23:11:54.478669",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "degree__course",
+  "institution__university",
+  "start_year",
+  "end_year",
+  "percentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "degree__course",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Degree/Course"
+  },
+  {
+   "fieldname": "institution__university",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Institution / University"
+  },
+  {
+   "fieldname": "start_year",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Start Year"
+  },
+  {
+   "depends_on": "eval:doc.currently_pursuing == 0",
+   "fieldname": "end_year",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "End Year"
+  },
+  {
+   "fieldname": "percentage",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Percentage"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-03-02 09:51:19.129841",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "Job Application Education Details",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

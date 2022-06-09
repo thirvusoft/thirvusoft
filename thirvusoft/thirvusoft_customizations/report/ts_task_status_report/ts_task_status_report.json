@@ -1,0 +1,32 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2022-04-06 06:44:26.136710",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2022-04-06 13:58:20.511168",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Task Status Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Project",
+ "report_name": "TS Task Status Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Projects Manager"
+  },
+  {
+   "role": "Projects User"
+  },
+  {
+   "role": "Employee Self Service"
+  }
+ ]
+}

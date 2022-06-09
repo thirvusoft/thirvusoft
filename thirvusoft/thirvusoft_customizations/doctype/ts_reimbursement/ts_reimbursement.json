@@ -1,0 +1,54 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-04-22 12:16:13.211143",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ts_expense",
+  "ts_expense_claim_type",
+  "ts_total_expense_claim"
+ ],
+ "fields": [
+  {
+   "fieldname": "ts_expense",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Expense Claim",
+   "options": "Expense Claim",
+   "read_only": 1
+  },
+  {
+   "fieldname": "ts_expense_claim_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": " Expense Claim Type",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fetch_from": "ts_expense.total_claimed_amount",
+   "fieldname": "ts_total_expense_claim",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "TS Total Expense Claim",
+   "read_only": 1,
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-04-22 16:34:48.038685",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Reimbursement",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
