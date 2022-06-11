@@ -1,8 +1,9 @@
 // Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 // For license information, please see license.txt
 var ts_child_data
-frappe.ui.form.on('TS Child Requirement Sheet', {
+frappe.ui.form.on('TS Daily Requirement Sheet Details', {
 	ts_assing_task:async function(frm,cdt,cdn){
+		console.log("lllllll")
 		var ts_user=frappe.user.name
 		var ts_data=locals[cdt][cdn]
 		ts_child_data=ts_data

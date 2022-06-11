@@ -34,6 +34,7 @@
    "options": "TS Daily Requirement Sheet Details"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "ts_pending_requirement",
    "fieldtype": "Table",
    "label": "Pending Requirement",
@@ -58,7 +59,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-16 21:52:21.435000",
+ "modified": "2022-06-11 14:48:07.653141",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",
