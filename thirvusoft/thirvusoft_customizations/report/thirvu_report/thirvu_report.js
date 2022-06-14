@@ -19,7 +19,7 @@ frappe.query_reports["Thirvu Report"] = {
 			"reqd": 1
 		},
 		{
-            "fieldname": "Project",
+            "fieldname": "project",
             "label": __("Project"),
             "fieldtype": "Link",
             "options": "Project",

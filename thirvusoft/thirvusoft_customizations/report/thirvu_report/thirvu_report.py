@@ -1,7 +1,8 @@
 # Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 # For license information, please see license.txt
 
-# import frappe
+import re
+import frappe
 
 from ast import Return
 from frappe.utils import data
@@ -19,7 +20,7 @@ def get_columns():
 		{
 			"label": _("Task"),
 			"fieldtype": "Link",
-			"fieldname": "task",
+			"fieldname": "name",
 			"options": "Task",
 			"width": 300
 		},
@@ -32,7 +33,7 @@ def get_columns():
 		{
 			"label": _("Task Type"),
 			"fieldtype": "Link",
-			"fieldname": "task_type",
+			"fieldname": "type",
 			"options": "Task Type",
 			"width": 150
 		},
@@ -45,7 +46,7 @@ def get_columns():
 		{
 			"label": _("Hours Taken"),
 			"fieldtype": "Float",
-			"fieldname": "hours_taken",
+			"fieldname": "actual_time_taken_in_hours",
 			"width": 150
 		},
 		{
@@ -59,11 +60,15 @@ def get_columns():
 	return columns
 
 def get_data(filters):
-	return [{
-		'task' : 'TASK-2022-01245',
-		'subject' : 'Forgot Password',
-		'task_type' : 'Medium',
-		'status' : 'Completed',
-		'hours_taken' : 5,
-		'resource_count' : 2
-	}]
+	result = frappe.db.get_list("Task", filters={"project": filters["project"], 
+	"actual_start_date": ["between", (filters['from_date'], filters['to_date'])],
+},fields=["name","subject","type","status","actual_time_taken_in_hours","resource_count"])
+	return result
+	# return [{
+	# 	'task' : 'TASK-2022-01245',
+	# 	'subject' : 'Forgot Password',
+	# 	'task_type' : 'Medium',
+	# 	'status' : 'Completed',
+	# 	'hours_taken' : 5,
+	# 	'resource_count' : 2
+	# }]
