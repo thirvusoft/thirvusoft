@@ -9,7 +9,6 @@
  "field_order": [
   "ts_add_requirement",
   "details_section",
-  "ts_pending_requirement",
   "ts_requirement",
   "amended_from",
   "section_break_5",
@@ -57,18 +56,12 @@
   {
    "fieldname": "section_break_5",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "ts_pending_requirement",
-   "fieldtype": "Table",
-   "label": "Pending Requirement",
-   "options": "TS Pending Task Requirement Sheet"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-11 13:56:15.806964",
+ "modified": "2022-06-14 11:10:04.325814",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",

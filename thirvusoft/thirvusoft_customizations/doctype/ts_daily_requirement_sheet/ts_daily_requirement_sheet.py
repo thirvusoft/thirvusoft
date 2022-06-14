@@ -10,13 +10,14 @@ from frappe.desk.form import assign_to
 import frappe
 class TSDailyRequirementSheet(Document):
    def validate(doc):
-        doc.deadline_time = frappe.get_value("TS Time","8d2b6eb21d", "deadline_time")
+        doc.deadline_time = frappe.db.get_single_value("Thirvusoft Settings", "deadline_time")
         finaltime = str(doc.deadline_time)
         time=':'.join([('0'*(2-len(t)))+t for t in finaltime.split(':')])
         now =datetime.now()
         current_time=now.strftime("%H:%M:%S")
         if current_time > time:
             doc.timing=1
+            print(current_time, time)
         else:
             doc.timing=0
 
