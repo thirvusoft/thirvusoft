@@ -11,19 +11,17 @@ class TSDailyRequirementSheet(Document):
 import frappe
 @frappe.whitelist()
 def tech_lead_name_finder(ts_user,ts_value):
-    ts_employee_user=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name',"designation"])
+    ts_employee_user=frappe.get_doc("User",ts_user)
     if(ts_employee_user):
-        ts_employee_user=ts_employee_user[0]
-        ts_employee_user_id=ts_employee_user[0]
-        ts_employee_user_name=ts_employee_user[1]
-        ts_employee_user_name_designation=ts_employee_user[2]
+        ts_employee_user_id=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name'])
+        ts_employee_user_id=ts_employee_user_id[0]
         if(ts_value=="0"):
-            if(ts_employee_user_name_designation=="Tech Lead"):
-                return ts_employee_user_id,ts_employee_user_name
+            if(ts_employee_user.role_profile_name=="Tech Lead"):
+                return ts_employee_user_id[0],ts_employee_user_id[1]
             else:
                 return 1
         else:
-            return ts_employee_user_id
+            return ts_employee_user_id[0]
 
  
  
@@ -32,12 +30,13 @@ from datetime import timedelta
 @frappe.whitelist()
 def employee_role(ts_user,ts_data):
    ts_data=eval(ts_data)
-   ts_employee_user_id=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name',"designation"])
+   ts_employee_user_id=frappe.get_doc("User",ts_user)
    if ts_employee_user_id:
-        ts_employee_user_id=ts_employee_user_id[0]
-        if(ts_employee_user_id[2]=="Tech Lead"):
+        if(ts_employee_user_id.role_profile_name=="Tech Lead"):
             ts_user_details=frappe.db.get_values("User",filters={"role_profile_name":"Scurm Master"},fieldname=["name"])
             if ts_user_details:
+                ts_employee_user_id_name=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name"])
+                ts_employee_user_id_name=ts_employee_user_id_name[0]
                 ts_user_details=ts_user_details[0]
                 ts_scurm_user_details=frappe.db.get_values("Employee",filters={"user_id":ts_user_details[0]},fieldname=["name","employee_name"])
                 ts_scurm_user_details=ts_scurm_user_details[0]
@@ -49,10 +48,10 @@ def employee_role(ts_user,ts_data):
                     "project":ts_data["ts_project"],
                     "status":"Open",
                     "priority":ts_data["ts_priority"],
-                    "assigned_tech_lead":ts_employee_user_id[0],
+                    "assigned_tech_lead":ts_employee_user_id_name[0],
                     "assigned_ci":ts_data["ts_assigned_crm_member"],
                     "assigned_team_member":ts_data["ts_assigned_member"],
-                    "ts_assigned_tech_lead_name":ts_employee_user_id[1],
+                    "ts_assigned_tech_lead_name":ts_employee_user_id.full_name,
                     "ts_assigned_ci_name":ts_data["ts_assigned_crm_name"],
                     "ts_assigned_team_member":ts_data["ts_assigned_member_name"],
                     "ts_scurm_master_id":ts_scurm_user_details[0],
@@ -114,30 +113,33 @@ def employee_role(ts_user,ts_data):
                     
                 })
                 doc2.insert(ignore_permissions=True)
-                return ts_employee_user_id[0],ts_employee_user_id[1]
+                return ts_employee_user_id_name[0],ts_employee_user_id.full_name
             else:
               return 1
 
 @frappe.whitelist()
 def pending_requirement_finder(ts_user):
     pending_requirement=[]
-    ts_last_doc=frappe.get_last_doc("TS Daily Requirement Sheet",{"owner":ts_user})
-    if ts_last_doc:
-        for requirement in ts_last_doc.__dict__["ts_requirement"]:
-            if requirement:
-                if not requirement.__dict__["ts_task_assigned_by"]:
-                    details=requirement.__dict__
-                    pending_requirement.append([{"ts_subject":details["ts_subject"],
-                            "ts_project":details["ts_project"],
-                            "ts_department":details["ts_department"],
-                            "ts_assigned_member":details["ts_assigned_member"],
-                            "ts_assigned_member_name":details["ts_assigned_member_name"],
-                            "ts_expected_start_date":details["ts_expected_start_date"],
-                            "ts_expected_hours":details["ts_expected_hours"],
-                            "ts_freezing_date":details["ts_freezing_date"],
-                            "ts_planned_commitment_date":details["ts_planned_commitment_date"],
-                            "ts_priority":details["ts_priority"],
-                            "ts_requriement":details["ts_requriement"],
-                            "ts_assigned_crm_member":details["ts_assigned_crm_member"],
-                            "ts_assigned_crm_name":details["ts_assigned_crm_name"]}])
-                    return pending_requirement
+    try:
+        ts_last_doc=frappe.get_last_doc("TS Daily Requirement Sheet",{"owner":ts_user})
+        if ts_last_doc:
+            for requirement in ts_last_doc.__dict__["ts_requirement"]:
+                if requirement:
+                    if not requirement.__dict__["ts_task_assigned_by"]:
+                        details=requirement.__dict__
+                        pending_requirement.append([{"ts_subject":details["ts_subject"],
+                                "ts_project":details["ts_project"],
+                                "ts_department":details["ts_department"],
+                                "ts_assigned_member":details["ts_assigned_member"],
+                                "ts_assigned_member_name":details["ts_assigned_member_name"],
+                                "ts_expected_start_date":details["ts_expected_start_date"],
+                                "ts_expected_hours":details["ts_expected_hours"],
+                                "ts_freezing_date":details["ts_freezing_date"],
+                                "ts_planned_commitment_date":details["ts_planned_commitment_date"],
+                                "ts_priority":details["ts_priority"],
+                                "ts_requriement":details["ts_requriement"],
+                                "ts_assigned_crm_member":details["ts_assigned_crm_member"],
+                                "ts_assigned_crm_name":details["ts_assigned_crm_name"]}])
+                        return pending_requirement
+    except:
+        pass
