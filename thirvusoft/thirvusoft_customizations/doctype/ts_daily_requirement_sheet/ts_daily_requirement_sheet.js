@@ -1,8 +1,9 @@
 // Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 // For license information, please see license.txt
 var ts_child_data
-frappe.ui.form.on('TS Child Requirement Sheet', {
+frappe.ui.form.on('TS Daily Requirement Sheet Details', {
 	ts_assing_task:async function(frm,cdt,cdn){
+		console.log("lllllll")
 		var ts_user=frappe.user.name
 		var ts_data=locals[cdt][cdn]
 		ts_child_data=ts_data
@@ -67,7 +68,7 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 				{fieldtype:'Column Break'},
 				{label:'Priority',fieldname:'ts_priority',fieldtype: 'Select',options:["","Low","Medium","High","Urgent"],reqd:1},
 				{fieldtype:'Section Break'},
-				{label:'Requirement',fieldname:'ts_requriement',fieldtype:'Long Text',reqd:1},
+				{label:'Requirement',fieldname:'ts_requriement',fieldtype:'Text Editor',reqd:1},
 			],
 			primary_action_label: "➕",
 			primary_action:function(data){

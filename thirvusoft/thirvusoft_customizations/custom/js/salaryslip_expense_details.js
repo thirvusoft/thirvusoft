@@ -28,13 +28,3 @@ frappe.ui.form.on('Salary Slip', {
         }) 
     },
 });
-// frappe.ui.form.on('Salary Detail', {
-//     after_save: function(frm,cdt,cdn) {    
-//         let payable=frm.doc.net_pay+frm.doc.ts_total_reimbursement-frm.doc.total_deduction ;
-//         frm.set_value("net_pay",payable)
-//         cur_frm.refresh_field('net_pay')
-//         frm.set_value("rounded_total",payable)
-//         cur_frm.refresh_field('rounded_total')
-//         frm.refresh()
-//     },
-// });
