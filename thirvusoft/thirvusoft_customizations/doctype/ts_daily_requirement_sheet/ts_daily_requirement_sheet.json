@@ -8,9 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "ts_add_requirement",
-  "ts_pending_requirements_section",
-  "ts_pending_requirement",
   "details_section",
+  "ts_pending_requirement",
+  "ew_requirement_section",
   "ts_requirement",
   "section_break_5",
   "deadline_time",
@@ -28,18 +28,19 @@
    "collapsible": 1,
    "fieldname": "details_section",
    "fieldtype": "Section Break",
-   "label": "New Requirements"
+   "label": "Pending Requirement"
   },
   {
    "fieldname": "ts_requirement",
    "fieldtype": "Table",
-   "label": "Requirement",
+   "label": " ",
    "options": "TS Daily Requirement Sheet Details"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "ts_pending_requirement",
    "fieldtype": "Table",
-   "label": "Pending Requirement",
+   "label": " ",
    "options": "TS Pending Task Requirement Sheet"
   },
   {
@@ -72,18 +73,25 @@
    "fieldtype": "Table",
    "label": "Pending Requirement",
    "options": "TS Pending Task Requirement Sheet"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "ew_requirement_section",
+   "fieldtype": "Section Break",
+   "label": "New Requirement"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-14 17:37:10.212750",
+ "modified": "2022-06-14 19:07:42.972521",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -97,6 +105,7 @@
    "write": 1
   },
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -105,7 +114,9 @@
    "read": 1,
    "report": 1,
    "role": "Tech Lead",
+   "select": 1,
    "share": 1,
+   "submit": 1,
    "write": 1
   },
   {

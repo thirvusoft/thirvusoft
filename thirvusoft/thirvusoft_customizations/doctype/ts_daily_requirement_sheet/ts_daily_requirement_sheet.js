@@ -3,7 +3,6 @@
 var ts_child_data
 frappe.ui.form.on('TS Daily Requirement Sheet Details', {
 	ts_assing_task:async function(frm,cdt,cdn){
-		console.log("lllllll")
 		var ts_user=frappe.user.name
 		var ts_data=locals[cdt][cdn]
 		ts_child_data=ts_data
