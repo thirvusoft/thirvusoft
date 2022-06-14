@@ -185,7 +185,7 @@
   {
    "fieldname": "ts_assigned_crm_member",
    "fieldtype": "Link",
-   "label": "Assigned CRM Member",
+   "label": "Assigned PM Member",
    "options": "Employee",
    "read_only": 1,
    "reqd": 1
@@ -198,7 +198,7 @@
    "fetch_from": "ts_assinged_ci.employee_name",
    "fieldname": "ts_assigned_crm_name",
    "fieldtype": "Data",
-   "label": "Assigned CRM Name",
+   "label": "Assigned PM Name",
    "read_only": 1
   },
   {
@@ -231,7 +231,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2022-06-14 16:52:31.441357",
+ "modified": "2022-06-14 19:11:22.144291",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Pending Task Requirement Sheet",
