@@ -2,7 +2,6 @@
 # For license information, please see license.txt
  
 from datetime import datetime
-from typing_extensions import Self
 
 from frappe.model.document import Document
 from frappe.desk.form import assign_to
