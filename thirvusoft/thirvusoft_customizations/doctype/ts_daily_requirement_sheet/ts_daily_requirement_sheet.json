@@ -8,9 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "ts_add_requirement",
-  "ts_pending_requirements_section",
-  "ts_pending_requirement",
   "details_section",
+  "ts_pending_requirement",
+  "ew_requirement_section",
   "ts_requirement",
   "amended_from"
  ],
@@ -25,18 +25,19 @@
    "collapsible": 1,
    "fieldname": "details_section",
    "fieldtype": "Section Break",
-   "label": "New Requirements"
+   "label": "Pending Requirement"
   },
   {
    "fieldname": "ts_requirement",
    "fieldtype": "Table",
-   "label": "Requirement",
+   "label": " ",
    "options": "TS Daily Requirement Sheet Details"
   },
   {
+   "allow_on_submit": 1,
    "fieldname": "ts_pending_requirement",
    "fieldtype": "Table",
-   "label": "Pending Requirement",
+   "label": " ",
    "options": "TS Pending Task Requirement Sheet"
   },
   {
@@ -50,21 +51,22 @@
   },
   {
    "collapsible": 1,
-   "fieldname": "ts_pending_requirements_section",
+   "fieldname": "ew_requirement_section",
    "fieldtype": "Section Break",
-   "label": "Pending Requirements"
+   "label": "New Requirement"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-05-16 21:52:21.435000",
+ "modified": "2022-06-14 19:07:42.972521",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -73,6 +75,34 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Tech Lead",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
    "share": 1,
    "submit": 1,
    "write": 1
