@@ -8,8 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "ts_add_requirement",
-  "details_section",
+  "ts_pending_requirements_section",
   "ts_pending_requirement",
+  "details_section",
   "ts_requirement",
   "section_break_5",
   "deadline_time",
@@ -24,9 +25,10 @@
    "label": "Add Requirement"
   },
   {
+   "collapsible": 1,
    "fieldname": "details_section",
    "fieldtype": "Section Break",
-   "label": "Details"
+   "label": "New Requirements"
   },
   {
    "fieldname": "ts_requirement",
@@ -35,7 +37,6 @@
    "options": "TS Daily Requirement Sheet Details"
   },
   {
-   "allow_on_submit": 1,
    "fieldname": "ts_pending_requirement",
    "fieldtype": "Table",
    "label": "Pending Requirement",

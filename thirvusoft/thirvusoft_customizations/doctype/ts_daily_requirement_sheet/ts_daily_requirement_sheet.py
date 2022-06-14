@@ -5,20 +5,11 @@ from datetime import datetime
 
 from frappe.model.document import Document
 from frappe.desk.form import assign_to
-  
-import frappe
+ 
 class TSDailyRequirementSheet(Document):
-   def validate(doc):
-        doc.deadline_time = frappe.get_value("TS Time","8d2b6eb21d", "deadline_time")
-        finaltime = str(doc.deadline_time)
-        time=':'.join([('0'*(2-len(t)))+t for t in finaltime.split(':')])
-        now =datetime.now()
-        current_time=now.strftime("%H:%M:%S")
-        if current_time > time:
-            doc.timing=1
-        else:
-            doc.timing=0
-
+   pass
+ 
+import frappe
 @frappe.whitelist()
 def tech_lead_name_finder(ts_user,ts_value):
     ts_employee_user=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name',"designation"])
