@@ -1,0 +1,242 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-06-14 16:50:24.072030",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ts_subject",
+  "column_break_1",
+  "ts_project",
+  "column_break_2",
+  "ts_department",
+  "column_break_4",
+  "ts_assigned_member",
+  "column_break_5",
+  "ts_assigned_member_name",
+  "section_break_6",
+  "ts_expected_start_date",
+  "column_break_8",
+  "ts_expected_hours",
+  "section_break_12",
+  "ts_freezing_date",
+  "column_break_14",
+  "ts_planned_commitment_date",
+  "column_break_16",
+  "ts_priority",
+  "column_break_18",
+  "ts_requriement",
+  "section_break_20",
+  "ts_assigned_crm_member",
+  "column_break_22",
+  "ts_assigned_crm_name",
+  "column_break_32",
+  "ts_add_to_new_requirements",
+  "column_break_23",
+  "new_requirement_added_by"
+ ],
+ "fields": [
+  {
+   "fieldname": "ts_subject",
+   "fieldtype": "Data",
+   "label": "Subject",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Department",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_assigned_member",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Assigned Team Member",
+   "options": "Employee",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "ts_assigend_member.employee_name",
+   "fieldname": "ts_assigned_member_name",
+   "fieldtype": "Data",
+   "label": "Assigned Member Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "ts_expected_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Expected Start Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "columns": 1,
+   "fieldname": "ts_expected_hours",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Expected Hours",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_freezing_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Freezing DateRequired Nature Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_planned_commitment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Planned Commitment Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_16",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "\nLow\nMedium\nHigh\nUrgent",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_18",
+   "fieldtype": "Section Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "ts_requriement",
+   "fieldtype": "Long Text",
+   "in_list_view": 1,
+   "label": "Requirement",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_20",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "ts_assigned_crm_member",
+   "fieldtype": "Link",
+   "label": "Assigned CRM Member",
+   "options": "Employee",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "ts_assinged_ci.employee_name",
+   "fieldname": "ts_assigned_crm_name",
+   "fieldtype": "Data",
+   "label": "Assigned CRM Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "bold": 1,
+   "depends_on": "eval:!doc.ts_tech_lead_name && !doc.new_requirement_added_by",
+   "fieldname": "ts_add_to_new_requirements",
+   "fieldtype": "Button",
+   "label": "Add To New Requirements",
+   "width": "100"
+  },
+  {
+   "fieldname": "column_break_23",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "new_requirement_added_by",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "New Requirement Added By",
+   "options": "Employee",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-06-14 16:52:31.441357",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Pending Task Requirement Sheet",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
