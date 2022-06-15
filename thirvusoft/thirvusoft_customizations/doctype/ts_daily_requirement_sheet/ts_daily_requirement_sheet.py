@@ -37,9 +37,11 @@ def employee_role(ts_user,ts_data):
             ts_user_details=frappe.db.get_values("User",filters={"role_profile_name":"Scrum Master"},fieldname=["name"])
             if ts_user_details:
                 ts_employee_user_id_name=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name"])
+                print(ts_employee_user_id)
                 ts_employee_user_id_name=ts_employee_user_id_name[0]
                 ts_user_details=ts_user_details[0]
                 ts_scrum_user_details=frappe.db.get_values("Employee",filters={"user_id":ts_user_details[0]},fieldname=["name","employee_name"])
+                print(ts_scrum_user_details)
                 ts_scrum_user_details=ts_scrum_user_details[0]
                 ts_expected_start_date=getdate(ts_data["ts_expected_start_date"])
                 ts_expected_end_date=ts_expected_start_date+timedelta(days=7)
@@ -66,15 +68,15 @@ def employee_role(ts_user,ts_data):
                 })
                 ts_new_task.insert()
                 ts_new_task.save()
-                employee = frappe.get_doc("Employee",ts_new_task.assigned_ci)
+                employee = frappe.get_doc("Employee",ts_new_task.assigned_product_manager_id)
                 ci_email = employee.user_id
                 
 
-                employee1= frappe.get_doc("Employee",ts_new_task.assigned_tech_lead)
+                employee1= frappe.get_doc("Employee",ts_new_task.assigned_tech_lead_id)
                 tech_email = employee1.user_id
                 
                 
-                employee2= frappe.get_doc("Employee",ts_new_task.assigned_team_member)
+                employee2= frappe.get_doc("Employee",ts_new_task.assigned_team_member_id)
                 team_email = employee2.user_id
                 
                 doc=frappe.new_doc("ToDo")
