@@ -10,7 +10,7 @@ frappe.query_reports["Thirvu Report"] = {
             const query_string = frappe.utils.get_query_string(frappe.get_route_str());
             const query_params = frappe.utils.get_query_params(query_string);
             frappe.call({
-                method: "path",
+                method: "thirvusoft.thirvusoft_customizations.report.thirvu_report.thirvu_report.get_thirvu_report_html",
                 freeze: true,
                 args: {action:'send_single_report', filters: filters, prepared_report_name: query_params.prepared_report_name, report_name: 'Agent Outstanding'}
             }

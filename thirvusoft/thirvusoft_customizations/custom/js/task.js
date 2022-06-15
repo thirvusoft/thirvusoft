@@ -34,7 +34,7 @@ frappe.ui.form.on("Task",{
         var ts_data=locals[cdt][cdn]
         console.log(ts_data.status)
         if(ts_data.status=="PR Verified"){
-            if(ts_data.ts_pr_review_member_email!=frappe.user.name){
+            if(ts_data.ts_pr_review_member!=frappe.user.name){
                 frappe.throw({
                     title:"Message",
                     message:"Not Permitted"
@@ -70,7 +70,7 @@ frappe.ui.form.on("Task",{
             var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             frappe.model.set_value(cdt,cdn,"completed_on",date)
             frappe.model.set_value(cdt,cdn,"completed_by",frappe.user.name)
-            frappe.db.get_value("User",{"role_profile_name":"Scurm Master"},"name").then(ts_user_details=>{
+            frappe.db.get_value("User",{"role_profile_name":"Scrum Master"},"name").then(ts_user_details=>{
                 if(ts_user_details.message["name"]){
                     if(ts_user_details.message["name"] != frappe.user.name){
                         frappe.throw({
@@ -82,7 +82,7 @@ frappe.ui.form.on("Task",{
                 else{
                     frappe.throw({
                         title:"Message",
-                        message:"Scurm Master Role Is Not Assigned"
+                        message:"Scrum Master Role Is Not Assigned"
                     })
                 }
             })

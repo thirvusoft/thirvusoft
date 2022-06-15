@@ -1,7 +1,8 @@
 # Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 # For license information, please see license.txt
  
- 
+from datetime import datetime
+
 from frappe.model.document import Document
 from frappe.desk.form import assign_to
  
@@ -33,13 +34,15 @@ def employee_role(ts_user,ts_data):
    ts_employee_user_id=frappe.get_doc("User",ts_user)
    if ts_employee_user_id:
         if(ts_employee_user_id.role_profile_name=="Tech Lead"):
-            ts_user_details=frappe.db.get_values("User",filters={"role_profile_name":"Scurm Master"},fieldname=["name"])
+            ts_user_details=frappe.db.get_values("User",filters={"role_profile_name":"Scrum Master"},fieldname=["name"])
             if ts_user_details:
                 ts_employee_user_id_name=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name"])
+                print(ts_employee_user_id)
                 ts_employee_user_id_name=ts_employee_user_id_name[0]
                 ts_user_details=ts_user_details[0]
-                ts_scurm_user_details=frappe.db.get_values("Employee",filters={"user_id":ts_user_details[0]},fieldname=["name","employee_name"])
-                ts_scurm_user_details=ts_scurm_user_details[0]
+                ts_scrum_user_details=frappe.db.get_values("Employee",filters={"user_id":ts_user_details[0]},fieldname=["name","employee_name"])
+                print(ts_scrum_user_details)
+                ts_scrum_user_details=ts_scrum_user_details[0]
                 ts_expected_start_date=getdate(ts_data["ts_expected_start_date"])
                 ts_expected_end_date=ts_expected_start_date+timedelta(days=7)
                 ts_new_task=frappe.get_doc({
@@ -48,15 +51,18 @@ def employee_role(ts_user,ts_data):
                     "project":ts_data["ts_project"],
                     "status":"Open",
                     "priority":ts_data["ts_priority"],
-                    "assigned_tech_lead":ts_employee_user_id_name[0],
-                    "assigned_ci":ts_data["ts_assigned_crm_member"],
-                    "assigned_team_member":ts_data["ts_assigned_member"],
+                    "assigned_tech_lead_id":ts_employee_user_id_name[0],
+                    "assigned_product_manager_id":ts_data["ts_assigned_crm_member"],
+                    "assigned_team_member_id":ts_data["ts_assigned_member"],
                     "ts_assigned_tech_lead_name":ts_employee_user_id.full_name,
                     "ts_assigned_ci_name":ts_data["ts_assigned_crm_name"],
                     "ts_assigned_team_member":ts_data["ts_assigned_member_name"],
-                    "ts_scurm_master_id":ts_scurm_user_details[0],
-                    "ts_scurm_master_name":ts_scurm_user_details[1],
+                    "scurm_master_id":ts_scrum_user_details[0],
+                    "ts_scurm_master_name":ts_scrum_user_details[1],
                     "ts_scurm_master_mail":ts_user_details[0],
+                    "ts_assigned_team_member_mail":frappe.db.get_value('Employee', ts_data["ts_assigned_member"], 'user_id'),
+                    "ts_assigned_crm_mail":frappe.db.get_value('Employee', ts_data["ts_assigned_crm_member"], 'user_id'),
+                    "ts_sassigned_tech_lead_mail":frappe.db.get_value('Employee', ts_employee_user_id_name[0], 'user_id'),
                     "exp_start_date":ts_data["ts_expected_start_date"],
                     "exp_end_date":ts_expected_end_date,
                     "expected_time":ts_data["ts_expected_hours"],
@@ -65,15 +71,15 @@ def employee_role(ts_user,ts_data):
                 })
                 ts_new_task.insert()
                 ts_new_task.save()
-                employee = frappe.get_doc("Employee",ts_new_task.assigned_ci)
+                employee = frappe.get_doc("Employee",ts_new_task.assigned_product_manager_id)
                 ci_email = employee.user_id
                 
 
-                employee1= frappe.get_doc("Employee",ts_new_task.assigned_tech_lead)
+                employee1= frappe.get_doc("Employee",ts_new_task.assigned_tech_lead_id)
                 tech_email = employee1.user_id
                 
                 
-                employee2= frappe.get_doc("Employee",ts_new_task.assigned_team_member)
+                employee2= frappe.get_doc("Employee",ts_new_task.assigned_team_member_id)
                 team_email = employee2.user_id
                 
                 doc=frappe.new_doc("ToDo")

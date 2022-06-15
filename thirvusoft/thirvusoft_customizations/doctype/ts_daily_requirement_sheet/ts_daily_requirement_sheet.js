@@ -28,7 +28,7 @@ frappe.ui.form.on('TS Daily Requirement Sheet Details', {
 				if(ts_r.message===1){
 					frappe.throw({
 						title:"Message",
-						message:"Scurm Master Role Is Not Assigned"
+						message:"Scrum Master Role Is Not Assigned"
 					})
 				}
 				else{
