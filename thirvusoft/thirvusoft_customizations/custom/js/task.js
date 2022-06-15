@@ -34,7 +34,7 @@ frappe.ui.form.on("Task",{
         var ts_data=locals[cdt][cdn]
         console.log(ts_data.status)
         if(ts_data.status=="PR Verified"){
-            if(ts_data.ts_pr_review_member_email!=frappe.user.name){
+            if(ts_data.ts_pr_review_member!=frappe.user.name){
                 frappe.throw({
                     title:"Message",
                     message:"Not Permitted"
