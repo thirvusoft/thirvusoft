@@ -5,6 +5,7 @@ from datetime import datetime
 
 from frappe.model.document import Document
 from frappe.desk.form import assign_to
+from frappe.desk.form.assign_to import notify_assignment
  
 class TSDailyRequirementSheet(Document):
    pass
@@ -86,7 +87,7 @@ def employee_role(ts_user,ts_data):
                 doc=frappe.new_doc("ToDo")
                 doc.update({
                     "owner" : team_email,
-                    "description" :  team_email,
+                    "description" :  ts_data["ts_subject"],
                     "reference_type" : "Task",
                     "reference_name" : ts_new_task.name,
                     "role" : "All",
@@ -94,12 +95,14 @@ def employee_role(ts_user,ts_data):
                     
                 })
                 doc.insert(ignore_permissions=True)
+                notify_assignment(doc.assigned_by, doc.owner, doc.reference_type, doc.reference_name, action='ASSIGN',
+				description=doc.description)
 
 
                 doc1=frappe.new_doc("ToDo")
                 doc1.update({
                     "owner" : tech_email,
-                    "description" : tech_email,
+                    "description" : ts_data["ts_subject"],
                     "reference_type" : "Task",
                     "reference_name" : ts_new_task.name,
                     "role" : "All",
@@ -107,12 +110,13 @@ def employee_role(ts_user,ts_data):
                     
                 })
                 doc1.insert(ignore_permissions=True)
-                
+                notify_assignment(doc1.assigned_by, doc1.owner, doc1.reference_type, doc1.reference_name, action='ASSIGN',
+				description=doc1.description)
 
                 doc2=frappe.new_doc("ToDo")
                 doc2.update({
                     "owner" :  ci_email,
-                    "description" : ci_email,
+                    "description" : ts_data["ts_subject"],
                     "reference_type" : "Task",
                     "reference_name" : ts_new_task.name,
                     "role" : "All",
@@ -120,6 +124,8 @@ def employee_role(ts_user,ts_data):
                     
                 })
                 doc2.insert(ignore_permissions=True)
+                notify_assignment(doc2.assigned_by, doc2.owner, doc2.reference_type, doc2.reference_name, action='ASSIGN',
+				description=doc2.description)
                 return ts_employee_user_id_name[0],ts_employee_user_id.full_name
             else:
                 return 1
