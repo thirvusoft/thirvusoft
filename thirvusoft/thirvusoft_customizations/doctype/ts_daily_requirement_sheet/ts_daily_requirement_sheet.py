@@ -15,14 +15,17 @@ def tech_lead_name_finder(ts_user,ts_value):
     ts_employee_user=frappe.get_doc("User",ts_user)
     if(ts_employee_user):
         ts_employee_user_id=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name",'employee_name'])
-        ts_employee_user_id=ts_employee_user_id[0]
-        if(ts_value=="0"):
-            if(ts_employee_user.role_profile_name=="Tech Lead"):
-                return ts_employee_user_id[0],ts_employee_user_id[1]
+        try:
+            ts_employee_user_id=ts_employee_user_id[0]
+            if(ts_value=="0"):
+                if(ts_employee_user.role_profile_name=="Tech Lead"):
+                    return ts_employee_user_id[0],ts_employee_user_id[1]
+                else:
+                    return 1
             else:
-                return 1
-        else:
-            return ts_employee_user_id[0]
+                return ts_employee_user_id[0]
+        except:
+            pass
 
  
  
@@ -30,18 +33,16 @@ from frappe.utils import getdate
 from datetime import timedelta
 @frappe.whitelist()
 def employee_role(ts_user,ts_data):
-   ts_data=eval(ts_data)
-   ts_employee_user_id=frappe.get_doc("User",ts_user)
-   if ts_employee_user_id:
+    ts_data=eval(ts_data)
+    ts_employee_user_id=frappe.get_doc("User",ts_user)
+    if ts_employee_user_id:
         if(ts_employee_user_id.role_profile_name=="Tech Lead"):
             ts_user_details=frappe.db.get_values("User",filters={"role_profile_name":"Scrum Master"},fieldname=["name"])
             if ts_user_details:
                 ts_employee_user_id_name=frappe.db.get_values("Employee",filters={"user_id":ts_user},fieldname=["name"])
-                print(ts_employee_user_id)
                 ts_employee_user_id_name=ts_employee_user_id_name[0]
                 ts_user_details=ts_user_details[0]
                 ts_scrum_user_details=frappe.db.get_values("Employee",filters={"user_id":ts_user_details[0]},fieldname=["name","employee_name"])
-                print(ts_scrum_user_details)
                 ts_scrum_user_details=ts_scrum_user_details[0]
                 ts_expected_start_date=getdate(ts_data["ts_expected_start_date"])
                 ts_expected_end_date=ts_expected_start_date+timedelta(days=7)
@@ -57,7 +58,7 @@ def employee_role(ts_user,ts_data):
                     "ts_assigned_tech_lead_name":ts_employee_user_id.full_name,
                     "ts_assigned_ci_name":ts_data["ts_assigned_crm_name"],
                     "ts_assigned_team_member":ts_data["ts_assigned_member_name"],
-                    "scurm_master_id":ts_scrum_user_details[0],
+                    "scrum_master_id":ts_scrum_user_details[0],
                     "ts_scurm_master_name":ts_scrum_user_details[1],
                     "ts_scurm_master_mail":ts_user_details[0],
                     "ts_assigned_team_member_mail":frappe.db.get_value('Employee', ts_data["ts_assigned_member"], 'user_id'),
@@ -121,13 +122,15 @@ def employee_role(ts_user,ts_data):
                 doc2.insert(ignore_permissions=True)
                 return ts_employee_user_id_name[0],ts_employee_user_id.full_name
             else:
-              return 1
+                return 1
+
+        
 
 @frappe.whitelist()
 def pending_requirement_finder(ts_user):
     pending_requirement=[]
     try:
-        ts_last_doc=frappe.get_last_doc("TS Daily Requirement Sheet",{"owner":ts_user})
+        ts_last_doc=frappe.get_last_doc("TS Daily Requirement Sheet",{"owner":ts_user,"docstatus":1})
         if ts_last_doc:
             for requirement in ts_last_doc.__dict__["ts_requirement"]:
                 if requirement:

@@ -41,8 +41,16 @@ frappe.ui.form.on("Task",{
                 })
             }
         }
-        if((["PR Conflicts","PR Merged","PR Closed","Deployed To Production","Cancelled","Hold"]).includes(ts_data.status)){
+        if((["PR Conflicts","PR Merged","PR Closed","Cancelled","Hold"]).includes(ts_data.status)){
             if(ts_data.ts_assigned_tech_lead_mail!=frappe.user.name){
+                frappe.throw({
+                    title:"Message",
+                    message:"Not Permitted"
+                })
+            }
+        }
+        if((["PR Conflicts","PR Merged","PR Closed"]).includes(ts_data.status)){
+            if(ts_data.ts_pr_review_member!=frappe.user.name){
                 frappe.throw({
                     title:"Message",
                     message:"Not Permitted"
@@ -57,7 +65,7 @@ frappe.ui.form.on("Task",{
                 })
             }
         }
-        if((["CRM Verified","Client Satisfied"]).includes(ts_data.status)){
+        if((["PM Verified","Client Satisfied","Deployed to Production"]).includes(ts_data.status)){
             if(ts_data.ts_assigned_crm_mail!=frappe.user.name){
                 frappe.throw({
                     title:"Message",
@@ -86,6 +94,11 @@ frappe.ui.form.on("Task",{
                     })
                 }
             })
+        }
+    },
+    onload:function(frm){
+        if(frm.is_new()){
+            frm.set_value("ts_assigned_team_member_mail",frappe.user.name)
         }
     }
 })
