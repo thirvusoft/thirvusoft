@@ -20,7 +20,7 @@
  "is_standard": 1,
  "login_required": 0,
  "max_attachment_size": 0,
- "modified": "2022-06-15 16:00:32.631610",
+ "modified": "2022-06-15 16:53:43.738437",
  "modified_by": "development@gmail.com",
  "module": "ThirvuSoft Customizations",
  "name": "feedback",
@@ -45,7 +45,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -57,7 +57,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -80,7 +80,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -92,7 +92,7 @@
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -111,11 +111,11 @@
    "fieldname": "rating_",
    "fieldtype": "Rating",
    "hidden": 0,
-   "label": "Rating_",
+   "label": "Rating",
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 0,
+   "reqd": 1,
    "show_in_filter": 0
   },
   {
@@ -123,11 +123,11 @@
    "fieldname": "feedback",
    "fieldtype": "Small Text",
    "hidden": 0,
-   "label": "How Can We Improve",
+   "label": "Any Other Suggestion",
    "max_length": 0,
    "max_value": 0,
    "read_only": 0,
-   "reqd": 1,
+   "reqd": 0,
    "show_in_filter": 0
   }
  ]
