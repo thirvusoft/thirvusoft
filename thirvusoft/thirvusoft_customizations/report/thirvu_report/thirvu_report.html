@@ -22,20 +22,23 @@
    padding: 0px !important;
   }
  
-  td, th{
-    border: 1px solid black
-  }
+  .table-bordered th.right{border-right: none !important;}
+  .table-bordered th.left{border-left: none !important;}
+     .table-bordered td.right{border-right: none !important;}
+     .table-bordered td.left{border-left: none !important;}
  </style>
  <div  id="header-html" class="hidden-pdf">
  </div>
-
+ <h4 class="text-center">{{ filters.from_date }}</h4>
+ <h4 class="text-center">{{ filters.to_date }}</h4>
+ <h5 class="text-center">{{ filters.project }}</h5>
  <h5 class="text-center">
   {{ "From Date " }}
   {{ frappe.format(filters.from_date, 'Date')}}
   {{ "To Date " }}
   {{ frappe.format(filters.to_date, 'Date')}}
   {{ "Project " }}
-  {{ frappe.format(filters.project, 'Data')}}
+  {{ frappe.format(filters.Project, 'Data')}}
  </h5>
  <table class="table table-bordered" style="border-color:#e56734;border-collapse: collapse; margin: 0px; padding: 0px;">
   <thead>
@@ -52,14 +55,14 @@
    {% for row in data %}
     <tr>
      {% if loop.index % 2 != 0 %}
-     <td class="right left text-left" style="background-color: #fce4d6 !important;">{{ row.name }}</td>
+     <td class="right left text-left" style="background-color: #fce4d6 !important;">{{ row.task }}</td>
      <td class="right left text-left" style="background-color: #fce4d6 !important;">{{ row.subject }}</td>
      <td class="right left text-right" style="background-color: #fce4d6 !important;">{{ row.type }}</td>
      <td class="right left text-right" style="background-color: #fce4d6 !important;">{{ row.status }}</td>
      <td class="right left text-right" style="background-color: #fce4d6 !important;">{{ row.actual_time }}</td>
      <td class="right left text-right" style="background-color: #fce4d6 !important;">{{ row.resource_count }}</td>
      {% else %}
-     <td class="right left text-left">{{ row.name }}</td>
+     <td class="right left text-left">{{ row.task }}</td>
      <td class="right left text-left">{{ row.subject }}</td>
      <td class="right left text-right">{{ row.type }}</td>
      <td class="right left text-right">{{ row.status }}</td>
@@ -70,12 +73,10 @@
    {% endfor %}
    <tr>
     <td class="right left text-left" style="background-color: #ffffff !important;"><strong>{{'Total'}}</strong></td>
-    <td class="right left text-right" style="background-color: #ffffff !important;"><strong></strong></td>
-    <td class="right left text-right" style="background-color: #ffffff !important;"><strong></strong></td>
-    <td class="right left text-right" style="background-color: #ffffff !important;"><strong></strong></td>
+    <td class="right left" style="background-color:#ffffff !important;"></td>
     <td class="right left text-right" style="background-color:#ffffff !important;"><strong>{{ data|sum(attribute='actual_time') }}</strong></td>
     <td class="right left text-right" style="background-color:#ffffff !important;"><strong>{{ data|sum(attribute='resource_count') }}</strong></td>
-    
+    <td class="right left text-right" style="background-color: #ffffff !important;"><strong></strong></td>
    </tr>
   </tbody>
  </table>
@@ -83,5 +84,6 @@
  <div id="footer-html" style="margin-bottom: 0em;">
   <p style="text-align: left;">
    <span style="float: right">{{ _("Page {0} / {1}").format('<span class="page"></span>', '<span class="topage"></span>') }}</span>
+   {{ filters.customer_group }} {{ " - Late Payment as on " }}{{ frappe.format(doc.report_start_time, 'Datetime')}}
    </p> 
  </div>

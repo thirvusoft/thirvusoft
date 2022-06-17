@@ -5,9 +5,11 @@ import re
 import frappe
 import json
 from frappe.utils.pdf import get_pdf
-from thirvusoft.thirvusoft_customizations.custom.python.api import send_report
+from frappe.www.printview import get_print_style
+from frappe.utils import today
+from frappe.desk.query_report import get_prepared_report_result, get_report_doc
+
 from frappe import _
-from frappe.utils.file_manager import save_file
 
 
 def execute(filters=None):
@@ -93,13 +95,37 @@ def get_content(doc):
 
 
 @frappe.whitelist()
-def get_thirvu_report_html(filters=None):
-	filters=json.loads(filters)
-	data = get_data(filters)
-	html_path='thirvusoft/thirvusoft_customizations/report/thirvu_report/thirvu_report.html'
-	html = frappe.render_template(html_path, {'filters':filters, 'data':data, 'doc':{}})
+def get_thirvu_report_html(customer_group=None, late_payment_filters=None, prepared_report_name=''):
+
+	user = frappe.session.user
+	if not late_payment_filters:
+		default_company = frappe.defaults.get_user_default("Company")
+		late_payment_filters = {'company': default_company,
+		'report_date': today(),
+		'ageing_based_on': 'Posting Date',
+		'range1': 30,
+		'range2': 60,
+		'range3': 90,
+		'range4': 120,
+		'customer_group': customer_group}
+	if isinstance(late_payment_filters, str):
+		late_payment_filters = eval(late_payment_filters)
+
+	report = get_report_doc('Thirvu Report')
+	data = get_prepared_report_result(report, late_payment_filters, prepared_report_name, user)
+	prepared_report_doc = data['doc']
+
+	base_template_path = "frappe/www/printview.html"
+	template_path = "essdee/essdee/report/agent_late_payment/agent_late_payment.html"
 	
-	pdf= get_pdf(html, {"orientation": 'Landscape'})
-	file=save_file('Thirvu_Report.pdf',pdf,'Report', 'Thirvu Report', is_private=0)
-	url=frappe.utils.get_url() + file.file_url
-	send_report(filters['project'],url,file.file_name)
+	print(data)
+	ee
+	if 'result' in data:
+		data = data['result']
+		data.pop()
+		html = frappe.render_template(template_path, \
+				{"filters": late_payment_filters, "data": data, "doc": prepared_report_doc})
+		html = frappe.render_template(base_template_path, {"body": html, \
+				"css": get_print_style(), "title": "Statement For " + late_payment_filters['customer_group']})
+
+		return html
