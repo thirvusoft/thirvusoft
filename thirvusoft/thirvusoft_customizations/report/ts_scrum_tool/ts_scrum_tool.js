@@ -19,20 +19,6 @@ frappe.query_reports["TS Scrum Tool"] = {
 			"default": frappe.datetime.get_today(),
 			"width": "80"
 		},
-		{
-			"fieldname":"status",
-			"label": __("Task Status"),
-			"fieldtype": "Select",
-			"options": ["","Hold","Open","Working","PR Opened","PR Merged","PR Conflicts","PR Closed","Deployed to Production","Development Testing Started","Development Testing Ended","CI Verified","Client Satisfied","Overdue","Completed","Cancelled"],
-			"width": "100"
-		},
-		{
-			"fieldname":"employee",
-			"label": __("Employee"),
-			"fieldtype": "Link",
-			"options": "Employee",
-			"width": "100"
-		}
 
 	],
 	
@@ -47,14 +33,13 @@ frappe.query_reports["TS Scrum Tool"] = {
 					size:"large",
 					title: "Action",
 					fields: [
-						{label:'Task Status',fieldname:'task_status',fieldtype:'Select',options: ["Hold","Open","Working","PR Opened","PR Merged","PR Conflicts","PR Closed","Deployed to Production","Development Testing Started","Development Testing Ended","CI Verified","Client Satisfied","Overdue","Completed","Cancelled"],reqd:1},
+						{label:'Task Status',fieldname:'task_status',fieldtype:'Select',options: ["Completed"],default:"Completed",reqd:1},
 						{fieldtype:'Column Break'},
 					],
 					primary_action:function(data){
 						var status = data.task_status
 						change_status(status)
 						button.hide()
-						frappe.msgprint("Status Updated");
 					}
 					
 						})
@@ -66,6 +51,9 @@ frappe.query_reports["TS Scrum Tool"] = {
 
 var change_status = function(status){	
 		let checked_rows_indexes = frappe.query_report.datatable.rowmanager.getCheckedRows();
+		if(checked_rows_indexes.length==0)
+		frappe.msgprint("Select rows to move status")
+		else{
 		let checked_rows = checked_rows_indexes.map(i => frappe.query_report.data[i]);
 			var task_list = []
 			for(var i=0;i<checked_rows.length;i++)
@@ -81,7 +69,8 @@ var change_status = function(status){
 								task_status: status
 							},
 						});
-				}	
+				}
+				frappe.msgprint("Status Updated");	}
 }
 
 
