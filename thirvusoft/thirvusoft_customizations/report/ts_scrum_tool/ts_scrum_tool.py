@@ -41,8 +41,8 @@ def get_columns():
 			
 		},
 		_("Expected Start Date") + ":Data:180",
-		_("Exp time") + ":data:100",
-		_("CI") + ":Data:180",
+		_("Expected time") + ":data:130",
+		_("Assigned PM") + ":Data:180",
 		_("Actual Time") + ":data:100",
 		_("Task Status") + ":Data:180",
 
