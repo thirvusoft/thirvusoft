@@ -16,39 +16,36 @@ def execute(filters=None):
 		if from_date and to_date:
 			conditions += " and task.exp_start_date between '{0}' and '{1}' ".format(from_date, to_date)
 		if employee:
-			conditions += " and task.assigned_team_member ='{0}' ".format(employee)
+			conditions += " and task.ts_assigned_team_member ='{0}' ".format(employee)
 		if status:
 			conditions += " and task.status = '{0}' ".format(status)
-	report_data = frappe.db.sql("""select task.name,task.assigned_team_member,emp.employee_name,task.assigned_ci,task.status,task.ts_reason
+	report_data = frappe.db.sql("""select task.name,task.ts_assigned_team_member,emp.employee_name,task.exp_start_date,task.expected_time,task.ts_assigned_ci_name,actual_time,task.status
 									from tabTask as task
 									left outer join tabEmployee as emp on
-  										  task.assigned_team_member = emp.name
+  										  task.ts_assigned_team_member = emp.name
 									{0}
 								""".format(conditions))
 	data = [list(i) for i in report_data]
 
-	ci_name = []
-	for i in data:
-		emp = frappe.get_all("Employee",fields=['employee_name'],filters={'name':i[3]})
-		if emp and emp[0]:
-			ci_name.append(emp[0]['employee_name'])
-	for i in range(len(ci_name)):data[i][3] = str(ci_name[i])
 	columns = get_columns()
 	return columns, data
 
 def get_columns():
 	columns = [
-		_("Task ID") + ":Link/Task:180",
-		_("Employee") + ":Link/Employee:280",
+		_("Task ID") + ":Link/Task:150",
+		_("Employee") + ":Data:200",
 		{
 			"fieldname":"employee_name",
 			"fieldtype": "Data",
 			"hidden": 1,
 			
 		},
-		_("CI") + ":Data/Employee:180",
-		_("Task Status") + ":Data/Task:180",
-		_("Reason") + ":Data:500",
+		_("Expected Start Date") + ":Data:180",
+		_("Exp time") + ":data:100",
+		_("CI") + ":Data:180",
+		_("Actual Time") + ":data:100",
+		_("Task Status") + ":Data:180",
+
 		]
 	
 	return columns
