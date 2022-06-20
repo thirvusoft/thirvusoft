@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-06-20 10:54:11.392564",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "task_completed",
+  "description",
+  "is_valid_feature_approved_from_management",
+  "reason"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "task_completed",
+   "fieldtype": "Check",
+   "label": "Task Completed"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_valid_feature_approved_from_management",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Valid Feature (Approved from Management)"
+  },
+  {
+   "depends_on": "eval:doc.is_valid_feature_approved_from_management==0",
+   "fieldname": "reason",
+   "fieldtype": "Text Editor",
+   "label": "Reason"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-06-20 11:16:26.789951",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "TS Task Checklist",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
