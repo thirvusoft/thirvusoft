@@ -7,6 +7,7 @@ def after_install():
     create_state()
     create_action()
     create_jobApplicant_workflow()
+    create_leave_application_workflow()
 
 def create_custom_role():
     existing_doc = frappe.db.get_value('Role', {'role_name': 'Receptionist'}, 'name')
@@ -160,16 +161,57 @@ def create_jobApplicant_workflow():
     workflow.insert(ignore_permissions=True)
     return workflow
 def create_state():
-    list=["Draft","Initial Data Validation","Selected For Telephoneic Interview","In-Person Interview","Rejected","Telephonic Interview","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","HR Round","Selected For Technical Round","Technical Round","Final Round","Selected For Employee"]
+    list=["Open","Approved by Tech Lead","Approved","Draft","Initial Data Validation","Selected For Telephoneic Interview","In-Person Interview","Rejected","Telephonic Interview","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","HR Round","Selected For Technical Round","Technical Round","Final Round","Selected For Employee"]
     for row in list:
         if not frappe.db.exists('Workflow State', row):
             new_doc = frappe.new_doc('Workflow State')
             new_doc.workflow_state_name = row
             new_doc.save()
 def create_action():
-    list=["Initial Data Validation","Selected For Telephoneic Interview","Reject","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","Selected For Technical Round","selected For Final Round","Selected For Employee","shortlisted"]
+    list=["Initial Data Validation","Approve","Reject","Selected For Telephoneic Interview","Reject","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","Selected For Technical Round","selected For Final Round","Selected For Employee","shortlisted"]
     for row in list:
         if not frappe.db.exists('Workflow Action Master', row):
             new_doc = frappe.new_doc('Workflow Action Master')
             new_doc.workflow_action_name = row
             new_doc.save()
+def create_leave_application_workflow():
+    if frappe.db.exists('Workflow', 'Leave Application Flow'):
+        frappe.delete_doc('Workflow', 'Leave Application Flow')
+    workflow = frappe.new_doc('Workflow')
+    workflow.workflow_name = 'Leave Application Flow'
+    workflow.document_type = 'Leave Application'
+    workflow.workflow_state_field = 'workflow_state'
+    workflow.is_active = 1
+    workflow.send_email_alert = 1
+    workflow.append('states', dict(
+        state = 'Open', allow_edit = 'All',
+    ))
+    workflow.append('states', dict(
+        state = 'Approved by Tech Lead', allow_edit = 'HR Manager'
+    ))
+    workflow.append('states', dict(
+        state = 'Approved', allow_edit = 'HR Manager', 	doc_status = 1
+    ))
+    workflow.append('states', dict(
+        state = 'Rejected', allow_edit = 'HR Manager'
+    ))
+    
+    workflow.append('transitions', dict(
+        state = 'Open', action='Approve', next_state = 'Approved by Tech Lead',
+        allowed='Tech Lead', allow_self_approval= 1
+    ))
+    workflow.append('transitions', dict(
+        state = 'Open', action='Reject', next_state = 'Rejected',
+        allowed='Tech Lead', allow_self_approval= 1, condition='doc.status == "Rejected" and doc.reason_for_rejected'
+    ))
+    workflow.append('transitions', dict(
+        state = 'Approved by Tech Lead', action='Approve', next_state = 'Approved',
+        allowed='HR Manager', allow_self_approval= 1
+    ))
+    workflow.append('transitions', dict(
+        state = 'Approved by Tech Lead', action='Reject', next_state = 'Rejected',
+        allowed='HR Manager', allow_self_approval= 1, condition='doc.status == "Rejected" and doc.reason_for_rejected'
+    ))
+   
+    workflow.insert(ignore_permissions=True)
+    return workflow
