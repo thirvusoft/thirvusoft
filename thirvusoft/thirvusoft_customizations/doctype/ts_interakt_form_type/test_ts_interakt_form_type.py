@@ -4,5 +4,5 @@
 # import frappe
 import unittest
 
-class TestTSTime(unittest.TestCase):
+class TestTSInteraktFormType(unittest.TestCase):
 	pass

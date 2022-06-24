@@ -1,7 +1,7 @@
 // Copyright (c) 2022, ThirvuSoft Private Limited and contributors
 // For license information, please see license.txt
 var ts_child_data
-frappe.ui.form.on('TS Child Requirement Sheet', {
+frappe.ui.form.on('TS Daily Requirement Sheet Details', {
 	ts_assing_task:async function(frm,cdt,cdn){
 		var ts_user=frappe.user.name
 		var ts_data=locals[cdt][cdn]
@@ -28,7 +28,7 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 				if(ts_r.message===1){
 					frappe.throw({
 						title:"Message",
-						message:"Scurm Master Role Is Not Assigned"
+						message:"Scrum Master Role Is Not Assigned"
 					})
 				}
 				else{
@@ -42,20 +42,32 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 	}
  })
  frappe.ui.form.on("TS Daily Requirement Sheet",{
-	ts_add_requirement: function(frm,cdt,cdn) {
+	ts_add_requirement: async function(frm,cdt,cdn) {
+		var ts_user=frappe.user.name
+		var ts_value=1
+		var ts_assigned_pm
+		await frappe.call({
+			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.tech_lead_name_finder",
+			args:{ts_user,ts_value},
+			callback(ts_r){
+				if(ts_r.message){
+					ts_assigned_pm=ts_r.message
+				}
+			}
+		})
 		var d = new frappe.ui.Dialog({
 			size:"large",
 			title: "Add Requirements",
 			fields: [
 				{label:'Subject',fieldname:'ts_subject',fieldtype:'Data',reqd:1},
 				{fieldtype:'Column Break'},
-				{label:'Project',fieldname:'ts_project',fieldtype:'Link',options: 'Project',reqd:1},
+				{label:'Project',fieldname:'ts_project',fieldtype:'Link',options: 'Project',reqd:1,filters:{'ts_assigned_crm':ts_assigned_pm}},
 				{fieldtype:'Section Break'},
 				{label:'Department',fieldname:'ts_department',fieldtype:'Link',options: 'Department',reqd:1},
 				{fieldtype:'Column Break'},
 				{label:'Assigned Team Member',fieldname:'ts_assigned_member',fieldtype:'Link',options:"Employee",reqd:1},
 				{fieldtype:'Column Break'},
-				{label:'Assigned CRM Member',fieldname:'ts_assigned_crm_member',fieldtype:'Link',options:"Employee",reqd:1,default:frappe.user.name,read_only:1},
+				{label:'Assigned PM Member',fieldname:'ts_assigned_crm_member',fieldtype:'Link',options:"Employee",reqd:1,default:frappe.user.name,read_only:1},
 				{fieldtype:'Section Break'},
 				{label:'Expected Start Date',fieldname:'ts_expected_start_date',fieldtype:'Date',reqd:1},
 				{fieldtype:'Column Break'},
@@ -123,34 +135,36 @@ frappe.ui.form.on('TS Child Requirement Sheet', {
 				}
 			}
 		})
-		frappe.call({
-			method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.pending_requirement_finder",
-			args:{ts_user},
-			callback(ts_r){
-				if(ts_r.message){
-					var details=ts_r.message
-					for(var i=0;i<details.length;i++){
-						for(var j=0;j<details[i].length;j++){
-							let row = frm.add_child("ts_pending_requirement");
-							row.ts_subject = details[i][j]["ts_subject"]
-							row.ts_project = details[i][j]["ts_project"]
-							row.ts_department = details[i][j]["ts_department"]
-							row.ts_assigned_member = details[i][j]["ts_assigned_member"]
-							row.ts_assigned_member_name = details[i][j]["ts_assigned_member_name"]
-							row.ts_expected_start_date = details[i][j]["ts_expected_start_date"]
-							row.ts_expected_hours = details[i][j]["ts_expected_hours"]
-							row.ts_freezing_date = details[i][j]["ts_freezing_date"]
-							row.ts_planned_commitment_date = details[i][j]["ts_planned_commitment_date"]
-							row.ts_priority = details[i][j]["ts_priority"]
-							row.ts_requriement = details[i][j]["ts_requriement"]
-							row.ts_assigned_crm_member = details[i][j]["ts_assigned_crm_member"]
-							row.ts_assigned_crm_name = details[i][j]["ts_assigned_crm_name"]
-							frm.refresh_field("ts_pending_requirement");
+		if(frm.is_new()){
+			frappe.call({
+				method:"thirvusoft.thirvusoft_customizations.doctype.ts_daily_requirement_sheet.ts_daily_requirement_sheet.pending_requirement_finder",
+				args:{ts_user},
+				callback(ts_r){
+					if(ts_r.message){
+						var details=ts_r.message
+						for(var i=0;i<details.length;i++){
+							for(var j=0;j<details[i].length;j++){
+								let row = frm.add_child("ts_pending_requirement");
+								row.ts_subject = details[i][j]["ts_subject"]
+								row.ts_project = details[i][j]["ts_project"]
+								row.ts_department = details[i][j]["ts_department"]
+								row.ts_assigned_member = details[i][j]["ts_assigned_member"]
+								row.ts_assigned_member_name = details[i][j]["ts_assigned_member_name"]
+								row.ts_expected_start_date = details[i][j]["ts_expected_start_date"]
+								row.ts_expected_hours = details[i][j]["ts_expected_hours"]
+								row.ts_freezing_date = details[i][j]["ts_freezing_date"]
+								row.ts_planned_commitment_date = details[i][j]["ts_planned_commitment_date"]
+								row.ts_priority = details[i][j]["ts_priority"]
+								row.ts_requriement = details[i][j]["ts_requriement"]
+								row.ts_assigned_crm_member = details[i][j]["ts_assigned_crm_member"]
+								row.ts_assigned_crm_name = details[i][j]["ts_assigned_crm_name"]
+								frm.refresh_field("ts_pending_requirement");
+							}
 						}
 					}
 				}
-			}
-		})
+			})
+		}
 	},
 	validate:function(frm,cdt,cdn){
 		var ts_data=locals[cdt][cdn]
