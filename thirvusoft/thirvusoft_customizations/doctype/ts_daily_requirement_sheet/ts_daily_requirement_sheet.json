@@ -41,15 +41,6 @@
    "options": "TS Pending Task Requirement Sheet"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "TS Daily Requirement Sheet",
-   "print_hide": 1,
-   "read_only": 1
-  },
-  {
    "fieldname": "deadline_time",
    "fieldtype": "Time",
    "label": "Deadline Time"
@@ -64,14 +55,8 @@
    "collapsible": 1,
    "fieldname": "section_break_5",
    "fieldtype": "Section Break",
+   "hidden": 1,
    "label": "Deadline Time"
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "ts_pending_requirement",
-   "fieldtype": "Table",
-   "label": " ",
-   "options": "TS Pending Task Requirement Sheet"
   },
   {
    "collapsible": 1,
@@ -96,12 +81,21 @@
   {
    "fieldname": "column_break_2",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "TS Daily Requirement Sheet",
+   "print_hide": 1,
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-06-15 17:01:19.115351",
+ "modified": "2022-06-24 18:34:27.699944",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Daily Requirement Sheet",

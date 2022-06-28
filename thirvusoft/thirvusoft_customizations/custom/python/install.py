@@ -15,6 +15,11 @@ def create_custom_role():
         new_doc = frappe.new_doc('Role')
         new_doc.role_name = 'Receptionist'
         new_doc.save()
+    existing_doc = frappe.db.get_value('Role', {'role_name': 'Product Manager'}, 'name')
+    if not existing_doc:
+        new_doc = frappe.new_doc('Role')
+        new_doc.role_name = 'Product Manager'
+        new_doc.save()
 def create_custom_meeting_issues():
     meetlist=["General","Scrum","Management","Wonder","Thirvu","Client","Session"]
     for row in meetlist:
