@@ -17,7 +17,6 @@ class TSDailyRequirementSheet(Document):
         current_time=now.strftime("%H:%M:%S")
         if current_time > time:
             doc.timing=1
-            print(current_time, time)
         else:
             doc.timing=0
 
