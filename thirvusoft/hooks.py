@@ -102,7 +102,8 @@ doc_events = {
 	# }
 }
 override_doctype_class = {
-	"Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip"
+	"Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip",
+	"Leave Application": "thirvusoft.thirvusoft_customizations.custom.python.leave_application.status_change"
 }
 
 # Document Events
