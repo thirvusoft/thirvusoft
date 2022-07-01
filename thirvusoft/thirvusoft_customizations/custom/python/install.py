@@ -166,22 +166,14 @@ def create_jobApplicant_workflow():
     workflow.insert(ignore_permissions=True)
     return workflow
 def create_state():
-<<<<<<< HEAD
     list=["Open","Approved by Tech Lead","Approved","Draft","Initial Data Validation","Selected For Telephoneic Interview","In-Person Interview","Rejected","Telephonic Interview","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","HR Round","Selected For Technical Round","Technical Round","Final Round","Selected For Employee"]
-=======
-    list=["Draft","Initial Data Validation","Selected For Telephoneic Interview","In-Person Interview","Rejected","Telephonic Interview","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","HR Round","Selected For Technical Round","Technical Round","Final Round","Selected For Employee"]
->>>>>>> 7e3f0dfb7730532ed6cffdc299153c0f3b53a0f0
     for row in list:
         if not frappe.db.exists('Workflow State', row):
             new_doc = frappe.new_doc('Workflow State')
             new_doc.workflow_state_name = row
             new_doc.save()
 def create_action():
-<<<<<<< HEAD
     list=["Initial Data Validation","Approve","Reject","Selected For Telephoneic Interview","Reject","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","Selected For Technical Round","selected For Final Round","Selected For Employee","shortlisted"]
-=======
-    list=["Initial Data Validation","Selected For Telephoneic Interview","Reject","Selected For In-Person Interview","Follow Up","Written Test","Selected For HR Round","Selected For Technical Round","selected For Final Round","Selected For Employee","shortlisted"]
->>>>>>> 7e3f0dfb7730532ed6cffdc299153c0f3b53a0f0
     for row in list:
         if not frappe.db.exists('Workflow Action Master', row):
             new_doc = frappe.new_doc('Workflow Action Master')
