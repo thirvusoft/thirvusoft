@@ -1,0 +1,33 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Rejected by HR Manager\"",
+ "creation": "2022-07-03 21:40:15.204395",
+ "days_in_advance": 0,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Leave Application",
+ "enabled": 1,
+ "event": "Value Change",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "Details\nEmployee : {{doc.employee}} {{doc.employee_name}}<br>\nLeave Type : {{doc.leave_type}}<br>\nFrom Date : {{doc.from_date}}<br>\nTo Date : {{doc.to_date}}<br>\nReason for rejection :{{doc.reason_for_rejected}}<br>\n<a href=\"{{frappe.utils.get_url_to_form(doc.doctype, doc.name)}}\">{{doc.name}}</a>",
+ "modified": "2022-07-05 11:12:59.690155",
+ "modified_by": "Administrator",
+ "module": "ThirvuSoft Customizations",
+ "name": "Leave application Rejected by HR Manager",
+ "owner": "navinsr.19bsr@kongu.edu",
+ "recipients": [
+  {
+   "condition": "doc.status == \"Rejected by HR Manager\"",
+   "receiver_by_document_field": "owner",
+   "receiver_by_role": ""
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "sender": "NaviN",
+ "sender_email": "navinthirvu@gmail.com",
+ "subject": "{{doc.employee_name}}'s Leave Application Notification ",
+ "value_changed": "status"
+}
