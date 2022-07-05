@@ -33,7 +33,8 @@ app_license = "MIT"
 # include js in doctype views
 doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
 				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
-				"Project":"thirvusoft_customizations/custom/js/project.js"	
+				"Project":"thirvusoft_customizations/custom/js/project.js",
+				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js"
 			}
 doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
 
@@ -95,12 +96,12 @@ doc_events = {
 	},
 	"Issue":{
 		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
+	},	
 	}
 	# "Issue": {
 	# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
 	# 	"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
 	# }
-}
 override_doctype_class = {
 	"Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip",
 	"Leave Application": "thirvusoft.thirvusoft_customizations.custom.python.leave_application.status_change"
