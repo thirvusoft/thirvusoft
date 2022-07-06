@@ -6,19 +6,32 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "deadline_time"
+  "deadline_time",
+  "biometric_settings_section",
+  "buffer_time"
  ],
  "fields": [
   {
    "fieldname": "deadline_time",
    "fieldtype": "Time",
    "label": "Deadline Time"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "biometric_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Biometric Settings"
+  },
+  {
+   "fieldname": "buffer_time",
+   "fieldtype": "Int",
+   "label": "Buffer Time"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2022-06-24 18:18:06.923644",
+ "modified": "2022-07-06 17:36:24.939109",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "Thirvusoft Settings",
