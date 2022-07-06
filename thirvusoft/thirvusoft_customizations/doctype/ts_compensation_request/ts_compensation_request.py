@@ -12,8 +12,6 @@ class TSCompensationRequest(Document):
        if leavelist == []:
            frappe.throw("check the leave date")
        else:
-           print(leavelist)
-           print("aaaaaaaaaaaaa")
            pass
    
        compensationlist = []
@@ -21,8 +19,6 @@ class TSCompensationRequest(Document):
        if  compensationlist  == []:
            frappe.throw("check the compensation date")
        else:
-           print( compensationlist )
-           print("bbbbbbbbbbbbbbbbb")
            pass
     def on_submit(self):
         leavelist = []
@@ -30,7 +26,7 @@ class TSCompensationRequest(Document):
         leavelist = frappe.db.get_list("Attendance", filters={"employee":self.employee,"attendance_date":self.leave_date,"status":"Absent"}, fields=["name"])
         compensationlist = []
         compensationlist  = frappe.db.get_list("Attendance", filters={"employee":self.employee,"attendance_date":self.compensation_date,"status":"Present"}, fields=["name"])
-        print("hdhdj",leavelist)
+       
         frappe.db.set_value(
 			"Attendance", compensationlist[0],"status", "Absent"
 		),
