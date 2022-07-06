@@ -67,7 +67,8 @@ doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.
 after_install=["thirvusoft.thirvusoft_customizations.custom.python.install.after_install",
 "thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task",
 "thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue",
-"thirvusoft.thirvusoft_customizations.custom.python.daily_requirement_workflow.workflow_document_creation"]
+"thirvusoft.thirvusoft_customizations.custom.python.daily_requirement_workflow.workflow_document_creation",
+"thirvusoft.thirvusoft_customizations.utils.after_install.after_install"]
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config

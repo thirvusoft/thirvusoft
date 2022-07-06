@@ -13,7 +13,7 @@
  "is_standard": 1,
  "label": "Thirvu Customer",
  "links": [],
- "modified": "2022-05-16 16:07:39.727544",
+ "modified": "2022-07-01 14:19:31.174004",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "Thirvu Customer",
@@ -23,8 +23,32 @@
  "shortcuts": [
   {
    "doc_view": "List",
+   "label": "Requirement Sheet",
+   "link_to": "TS Customer Requirement Sheet",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
    "label": "Issue",
    "link_to": "Issue",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Task",
+   "link_to": "Task",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Quotation",
+   "link_to": "Quotation",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "List",
+   "label": "Invoice",
+   "link_to": "Sales Invoice",
    "type": "DocType"
   }
  ]
