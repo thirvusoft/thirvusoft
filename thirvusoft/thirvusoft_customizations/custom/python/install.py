@@ -240,7 +240,6 @@ def create_leave_application_workflow():
     workflow.insert(ignore_permissions=True)
     return workflow
 
-
 def create_compensation_request_workflow():
     if frappe.db.exists('Workflow', 'TS Compensation Request workflow'):
         frappe.delete_doc('Workflow', 'TS Compensation Request workflow')

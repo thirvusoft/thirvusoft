@@ -26,7 +26,7 @@ class TSCompensationRequest(Document):
         leavelist = frappe.db.get_list("Attendance", filters={"employee":self.employee,"attendance_date":self.leave_date,"status":"Absent"}, fields=["name"])
         compensationlist = []
         compensationlist  = frappe.db.get_list("Attendance", filters={"employee":self.employee,"attendance_date":self.compensation_date,"status":"Present"}, fields=["name"])
-       
+
         frappe.db.set_value(
 			"Attendance", compensationlist[0],"status", "Absent"
 		),
@@ -39,5 +39,4 @@ class TSCompensationRequest(Document):
         frappe.db.set_value(
 			"Attendance", leavelist [0],"compensation", 1
 		)
-	   
-	
+
