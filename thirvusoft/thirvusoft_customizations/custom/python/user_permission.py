@@ -25,12 +25,7 @@ def customer_permission(doc,event):
             doc1.insert()
         doc_list1=frappe.get_all('User Permission',{'allow':"Lead","user":doc.user_id},pluck="name")
         if(doc_list1):
-            user_per=frappe.get_doc("User Permission",doc_list1[0])
-            user_per.update({
-                "for_value":""
-            })
-            user_per.flags.ignore_mandatory=True
-            user_per.save()
+            pass
         else:  
             doc1=frappe.new_doc('User Permission')
             doc1.update({
