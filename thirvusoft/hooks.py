@@ -97,7 +97,15 @@ doc_events = {
 	},
 	"Issue":{
 		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
-	},	
+	},
+	"Customer":{
+		'after_insert':"thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission",
+		'before_save':"thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission"
+	},
+	"Lead":{
+		'after_insert':'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission',
+		'before_save':'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission'
+	}
 	}
 	# "Issue": {
 	# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",

@@ -6,3 +6,10 @@ frappe.ui.form.on('TS Customer Requirement Sheet', {
 
 	// }
 });
+
+frappe.ui.form.on('TS Customer Requirement Sheet Details', {
+	ts_requirements_add: function(frm,cdt,cdn){
+	   frappe.model.set_value(cdt,cdn,"ts_date",frappe.datetime.nowdate())
+	},
+   
+});
