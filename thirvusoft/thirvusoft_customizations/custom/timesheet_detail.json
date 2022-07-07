@@ -1,0 +1,32 @@
+{
+ "custom_fields": [],
+ "custom_perms": [],
+ "doctype": "Timesheet Detail",
+ "property_setters": [
+  {
+   "_assign": null,
+   "_comments": null,
+   "_liked_by": null,
+   "_user_tags": null,
+   "creation": "2022-06-17 16:00:49.551184",
+   "default_value": null,
+   "doc_type": "Timesheet Detail",
+   "docstatus": 0,
+   "doctype_or_field": "DocField",
+   "field_name": "project",
+   "idx": 0,
+   "modified": "2022-06-17 16:00:49.551184",
+   "modified_by": "development@gmail.com",
+   "name": "Timesheet Detail-project-read_only_depends_on",
+   "owner": "development@gmail.com",
+   "parent": null,
+   "parentfield": null,
+   "parenttype": null,
+   "property": "read_only_depends_on",
+   "property_type": "Data",
+   "row_name": null,
+   "value": ""
+  }
+ ],
+ "sync_on_migrate": 1
+}
