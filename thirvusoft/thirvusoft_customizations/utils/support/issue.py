@@ -7,7 +7,7 @@ def issue_customization():
 def issue_custom_fields():
     pass
 
-def issue_property_setter():
-    make_property_setter("Issue", "service_level_section", "hidden", 1, "Section Break")
-    make_property_setter("Issue", "naming_series", "hidden", 1, "Select")
-    make_property_setter("Issue", "priority", "reqd", 1, "Link")
+def issue_property_setter():pass
+    # make_property_setter("Issue", "service_level_section", "hidden", 1, "Section Break")
+    # make_property_setter("Issue", "naming_series", "hidden", 1, "Select")
+    # make_property_setter("Issue", "priority", "reqd", 1, "Link")

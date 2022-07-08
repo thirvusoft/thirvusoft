@@ -461,7 +461,7 @@
    "name": "Project-estimation_details",
    "no_copy": 0,
    "non_negative": 0,
-   "options": "Estimation Details",
+   "options": "TS Estimation Details",
    "owner": "development@gmail.com",
    "parent": null,
    "parentfield": null,
