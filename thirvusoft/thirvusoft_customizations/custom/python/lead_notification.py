@@ -10,7 +10,7 @@ def lead_notification(doc = None):
         user = get_user_fullname(frappe.db.get_value('Lead', doc, 'lead_owner'))
         message = f"New Lead Created {doc}.\n{doc} is created by {user}"
     else:
-        leads = frappe.get_all("Lead",{'call_connected':0,'status':"Lead"},pluck="name")
+        leads = frappe.get_all("Lead",{'call_connected':0,'status':"Lead", 'creation':["<",add_days(today(), -1)]},pluck="name")
         message = ""
         if(not len(for_user)):frappe.msgprint("<b>No one</b> is assigned with the role <b>Client Project Manager</b> (to send System Notification).")
     args={
