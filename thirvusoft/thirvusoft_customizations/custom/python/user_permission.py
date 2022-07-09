@@ -78,4 +78,9 @@ def lead_permission(doc, event):
                 "apply_to_all_doctypes": 1
             })
             doc1.insert()
+    if(event == "after_insert"):
+        from thirvusoft.thirvusoft_customizations.custom.python.lead_notification import lead_notification 
+        lead_notification(doc.name)
     frappe.db.commit()
+    
+        
