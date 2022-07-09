@@ -17,8 +17,6 @@ def sendform(temp_name,data):
 	api_endpoint=frappe.db.get_single_value("Interakt Settings","api_endpoint")
 	temp_name=json.loads(temp_name)
 	data=json.loads(data)
-	frappe.errprint(temp_name)
-	frappe.errprint(temp_name['name'])
 	doc = frappe.get_doc({
 	"doctype": "TS Interakt Form Type",
 	"doctype_name": data['doctype'],
