@@ -1,7 +1,12 @@
 import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
+from frappe.custom.doctype.property_setter.property_setter import make_property_setter
 
 
+def customize():
+    lead_customize_field()
+    lead_property_setter()
+    
 def lead_customize_field():
      lead_customize_field = {
         "Lead": [
@@ -78,8 +83,21 @@ def lead_customize_field():
                  insert_after="column_break_a",
                  description="Click to delete system notification of this document.",                 
                  ),
+             dict(fieldname="referrel",
+                 label="Referrel",
+                 fieldtype="Data",
+                 insert_after='language',
+                 )
 
         ]
     }
      create_custom_fields(lead_customize_field)
 
+def lead_property_setter():
+    make_property_setter("Lead","quick_entry", "quick_entry", 1, "Check",for_doctype="doctype"),
+    make_property_setter("Lead","lead_name", "bold", 1, "Check"),
+    make_property_setter("Lead","mobile_no","bold",1,"Check"),
+    make_property_setter("Lead","industry","bold",1,"Check"),
+    make_property_setter("Lead","notes","bold",1,"Check"),
+    make_property_setter("Lead","referrel","bold",1,"Check")
+    

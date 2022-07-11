@@ -62,7 +62,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-07-06 14:23:40.043862",
+ "modified": "2022-07-11 16:18:49.460416",
  "modified_by": "Administrator",
  "module": "ThirvuSoft Customizations",
  "name": "TS Customer Requirement Sheet",
@@ -81,6 +81,7 @@
    "write": 1
   }
  ],
+ "quick_entry": 1,
  "sort_field": "modified",
  "sort_order": "DESC"
 }
