@@ -51,7 +51,8 @@ def lead_customize_field():
                  ),
             dict(fieldname="designation1",
                  label="Designation",
-                 fieldtype="Data",
+                 fieldtype="Link",
+                 options="Designation",
                  insert_after="email"
                  ),
             dict(fieldname="gender1",
