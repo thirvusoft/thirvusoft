@@ -60,12 +60,6 @@ def lead_customize_field():
                  options="Gender",
                  insert_after="designation1"
                  ),
-            dict(fieldname="gender1",
-                 label="Gender",
-                 fieldtype="Link",
-                 options="Gender",
-                 insert_after="designation1"
-                 ),
             dict(fieldname="call_connected",
                  label="Lead call attended",
                  fieldtype="Check",

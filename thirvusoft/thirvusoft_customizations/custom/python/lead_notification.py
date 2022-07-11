@@ -25,6 +25,7 @@ def send_notification(leads,message,for_user):
     for i in leads:
         from_user = frappe.db.get_value("Lead", i, 'lead_owner')
         for user in for_user:
+            print(user, i,"?????")
             if(message == ""):message1 = get_message_for_uncontacted_leads(from_user,i)
             notification = frappe.new_doc("Notification Log")
             notification.update({

@@ -65,11 +65,11 @@ doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.
 # before_install = "thirvusoft.install.before_install"
 # after_install = "thirvusoft.install.after_install"
 # after_install= {"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator"}
-after_install=["thirvusoft.thirvusoft_customizations.custom.python.install.after_install",
-"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task",
-"thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue",
-"thirvusoft.thirvusoft_customizations.custom.python.daily_requirement_workflow.workflow_document_creation",
-"thirvusoft.thirvusoft_customizations.utils.after_install.after_install"]
+after_install = ["thirvusoft.thirvusoft_customizations.custom.python.install.after_install",
+                 "thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task",
+                 "thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue",
+                 "thirvusoft.thirvusoft_customizations.custom.python.daily_requirement_workflow.workflow_document_creation",
+                 "thirvusoft.thirvusoft_customizations.utils.after_install.after_install"]
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
@@ -93,28 +93,29 @@ after_install=["thirvusoft.thirvusoft_customizations.custom.python.install.after
 # Override standard doctype classes
 
 doc_events = {
-	"Job Applicant": {
-		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
-	},
-	"Issue":{
-		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
-	},
-	"Customer":{
-		'after_insert':"thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission",
-		'before_save':"thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission"
-	},
-	"Lead":{
-		'after_insert':'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission',
-		'before_save':'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission'
-	}
-	}
-	# "Issue": {
-	# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
-	# 	"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
-	# }
+    "Job Applicant": {
+        "validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
+    },
+    "Issue": {
+        "validate": "thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
+    },
+    "Customer": {
+        'after_insert': "thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission",
+        'before_save': "thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission"
+    },
+    "Lead": {
+        'after_insert': 'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission',
+        'before_save': 'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission',
+        'validate': "thirvusoft.thirvusoft_customizations.custom.python.lead.connect_contact"
+    }
+}
+# "Issue": {
+# 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
+# 	"after_insert": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.create_task",
+# }
 override_doctype_class = {
-	"Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip",
-	"Leave Application": "thirvusoft.thirvusoft_customizations.custom.python.leave_application.status_change"
+    "Salary Slip": "thirvusoft.thirvusoft_customizations.custom.python.salaryslip_expense_details.SalarySlip",
+    "Leave Application": "thirvusoft.thirvusoft_customizations.custom.python.leave_application.status_change"
 }
 
 # Document Events
@@ -197,4 +198,3 @@ user_data_fields = [
 # auth_hooks = [
 # 	"thirvusoft.auth.validate"
 # ]
-
