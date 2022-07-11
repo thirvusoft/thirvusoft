@@ -88,17 +88,22 @@ def lead_customize_field():
                  label="Referrel",
                  fieldtype="Data",
                  insert_after='language',
-                 )
+                 ),
+             dict(fieldname="next_contact_date",
+                 label="Next Contact Date",
+                 fieldtype="Date",
+                 insert_after="contact_date",
+                 ),
 
         ]
     }
      create_custom_fields(lead_customize_field)
 
 def lead_property_setter():
-    make_property_setter("Lead","quick_entry", "quick_entry", 1, "Check",for_doctype="doctype"),
+    make_property_setter("Lead","quick_entry", "quick_entry", 1, "Check",for_doctype=True ),
     make_property_setter("Lead","lead_name", "bold", 1, "Check"),
     make_property_setter("Lead","mobile_no","bold",1,"Check"),
     make_property_setter("Lead","industry","bold",1,"Check"),
     make_property_setter("Lead","notes","bold",1,"Check"),
     make_property_setter("Lead","referrel","bold",1,"Check")
-    
+    make_property_setter("Lead","contact_date","hidden",1,"Check")

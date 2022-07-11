@@ -18,3 +18,4 @@ def create_role():
             "dashboard":1,      
         })
         role.insert(ignore_permissions=True)
+    return

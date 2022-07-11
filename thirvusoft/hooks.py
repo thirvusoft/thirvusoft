@@ -129,10 +129,10 @@ scheduler_events = {
 		"0 9,12,16 * * *": [
 					"thirvusoft.thirvusoft_customizations.custom.python.lead_notification.lead_notification",
 				],
-	}
-	# "daily": [
-	# 	"thirvusoft.tasks.daily"
-	# ],
+	},
+	"daily": [
+		"thirvusoft.thirvusoft_customizations.custom.python.lead_notification.next_contact_notification"
+	]
 	# "hourly": [
 	# 	"thirvusoft.tasks.hourly"
 	# ],
