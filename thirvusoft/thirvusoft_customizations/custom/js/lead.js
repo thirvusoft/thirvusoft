@@ -12,21 +12,7 @@ frappe.ui.form.on("Lead",{
                 }
             }
         })
-    }
-})
-
-// frappe.ui.form.on('Lead', {
-//     // onload_post_render: function(frm) {
-//     //     cur_frm.remove_custom_button("Opportunity","Create")
-//     //     console.log("Mani")
-//     // },
-//     refresh: function(frm) {
-//         cur_frm.remove_custom_button("Opportunity","Create")
-//         console.log("Jegan")
-//     }
-// })
-
-frappe.ui.form.on('Lead', {
+    },
     refresh: function(frm) {
         cur_frm.remove_custom_button("Opportunity","Create")
         frm.add_custom_button(__('Customer Requirement Sheet'), function(){
@@ -47,5 +33,9 @@ frappe.ui.form.on('Lead', {
         ])
             
         }, __("Create"));
+    },
+    next_contact_date: function(frm){
+        cur_frm.set_value("contact_date", frm.doc.next_contact_date)
+        cur_frm.refresh()
     }
 })

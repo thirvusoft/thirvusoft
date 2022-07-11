@@ -1,3 +1,4 @@
+from datetime import datetime
 import frappe
 from frappe.utils.user import get_user_fullname
 from frappe.utils.data import pretty_date
@@ -18,14 +19,14 @@ def lead_notification(doc = None):
         'message':message,
         'for_user':for_user
     }
-    frappe.enqueue(method = send_notification, **args, queue = "long")
+    if(len(leads)):
+        frappe.enqueue(method = send_notification, **args, queue = "long")
     
 def send_notification(leads,message,for_user):
     message1=""
     for i in leads:
         from_user = frappe.db.get_value("Lead", i, 'lead_owner')
         for user in for_user:
-            print(user, i,"?????")
             if(message == ""):message1 = get_message_for_uncontacted_leads(from_user,i)
             notification = frappe.new_doc("Notification Log")
             notification.update({
@@ -57,3 +58,41 @@ def delete_notification_log(doc, name):
                       ''')
         return True
     return False
+
+
+def next_contact_notification():
+    leads = frappe.get_all("Lead", filters={'next_contact_date':today(), 'call_connected':0}, pluck = "name")
+    for_user = frappe.get_all("Has Role",pluck="parent",filters={"role":"Client Project Manager"})
+    args={
+        'leads':leads,
+        'for_user':for_user 
+    }
+    if(len(leads)):
+        frappe.enqueue(method = send_next_contact_notification, **args, queue = "long")
+    
+    
+def send_next_contact_notification(leads, for_user):
+    for lead in leads:
+        from_user = frappe.get_value("Lead", lead, 'lead_owner')
+        next_contact_by =  frappe.get_value("Lead", lead, 'contact_by')
+        msg=''
+        if(next_contact_by):
+            msg+=next_contact_by
+            for_user = [next_contact_by]
+            from_user = frappe.get_value("Lead", lead, 'modified_by')
+            msg+=" from_user" + from_user
+        for user in for_user:
+            username = get_user_fullname(user)
+            notification = frappe.new_doc("Notification Log")
+            notification.update({
+                    "subject" : f"Its time to contact {lead}. As {username} schedule next contact date as today.",
+                    "email_content" : f"Its time to contact {lead}. As {username} schedule next contact date as today.",
+                    "document_type" : "Lead",
+                    "document_name" : lead,
+                    "for_user" : user,
+                    "from_user" : from_user,
+                    "type" : "Alert",
+                    "read" : 0
+                })
+            notification.insert(ignore_permissions=True)
+            frappe.db.commit()
