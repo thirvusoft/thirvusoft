@@ -1,10 +1,9 @@
-from readline import insert_text
 import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 
 def lead_customize_field():
-    lead_customize_field = {
+     lead_customize_field = {
         "Lead": [
             dict(fieldname="section_break1",
                  label="Requirements",
@@ -61,9 +60,32 @@ def lead_customize_field():
                  options="Gender",
                  insert_after="designation1"
                  ),
+            dict(fieldname="gender1",
+                 label="Gender",
+                 fieldtype="Link",
+                 options="Gender",
+                 insert_after="designation1"
+                 ),
+            dict(fieldname="call_connected",
+                 label="Lead call attended",
+                 fieldtype="Check",
+                 insert_after="organization_lead",
+                 description="Enable this after first lead call. ",
+                 in_list_view = 1,
+                 in_standard_filter = 1
+                 ),
+            dict(fieldname="column_break_a",
+                 fieldtype="Column Break",
+                 insert_after="call_connected",
+                 ),
+            dict(fieldname="delete_notif_log",
+                 label="Delete Notification",
+                 fieldtype="Button",
+                 insert_after="column_break_a",
+                 description="Click to delete system notification of this document.",                 
+                 ),
 
         ]
     }
-
-    create_custom_fields(lead_customize_field)
+     create_custom_fields(lead_customize_field)
 

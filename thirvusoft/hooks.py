@@ -34,7 +34,8 @@ app_license = "MIT"
 doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
 				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
 				"Project":"thirvusoft_customizations/custom/js/project.js",
-				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js"
+				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js",
+				"Lead":"thirvusoft_customizations/custom/js/lead.js"
 			}
 doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
 
@@ -122,23 +123,25 @@ override_doctype_class = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"thirvusoft.tasks.all"
-# 	],
-# 	"daily": [
-# 		"thirvusoft.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"thirvusoft.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"thirvusoft.tasks.weekly"
-# 	]
-# 	"monthly": [
-# 		"thirvusoft.tasks.monthly"
-# 	]
-# }
+scheduler_events = {
+	"cron": {
+		"0 9,12,16 * * *": [
+					"thirvusoft.thirvusoft_customizations.custom.python.lead_notification.lead_notification",
+				],
+	}
+	# "daily": [
+	# 	"thirvusoft.tasks.daily"
+	# ],
+	# "hourly": [
+	# 	"thirvusoft.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"thirvusoft.tasks.weekly"
+	# ]
+	# "monthly": [
+	# 	"thirvusoft.tasks.monthly"
+	# ]
+}
 
 # Testing
 # -------
