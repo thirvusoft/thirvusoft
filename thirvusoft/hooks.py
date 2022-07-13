@@ -35,8 +35,8 @@ doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
 				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
 				"Project":"thirvusoft_customizations/custom/js/project.js",
 				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js",
-				"Lead":"thirvusoft_customizations/custom/js/lead.js"
-			}
+				"Lead":"thirvusoft_customizations/custom/js/lead.js",
+                			}
 doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
 
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -69,7 +69,10 @@ after_install = ["thirvusoft.thirvusoft_customizations.custom.python.install.aft
                  "thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_task",
                  "thirvusoft.thirvusoft_customizations.custom.python.property_setter.property_creator_issue",
                  "thirvusoft.thirvusoft_customizations.custom.python.daily_requirement_workflow.workflow_document_creation",
-                 "thirvusoft.thirvusoft_customizations.utils.after_install.after_install"]
+                 "thirvusoft.thirvusoft_customizations.utils.after_install.after_install",
+                 "thirvusoft.thirvusoft_customizations.custom.python.employee.employee_customization",
+                 "thirvusoft.thirvusoft_customizations.custom.python.compensation.compensation_customization",
+                 "thirvusoft.thirvusoft_customizations.custom.python.workflow.compensation_workflow",]
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
@@ -103,11 +106,13 @@ doc_events = {
         'after_insert': "thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission",
         'before_save': "thirvusoft.thirvusoft_customizations.custom.python.user_permission.customer_permission"
     },
+    
     "Lead": {
         'after_insert': 'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission',
         'before_save': 'thirvusoft.thirvusoft_customizations.custom.python.user_permission.lead_permission',
         'validate': "thirvusoft.thirvusoft_customizations.custom.python.lead.connect_contact"
-    }
+    },
+
 }
 # "Issue": {
 # 	"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.issues_raised",
