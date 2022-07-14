@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from thirvusoft.thirvusoft_customizations.utils.hr.leave_application.leave_application_custom_fields import leave_application_customization
+from thirvusoft.thirvusoft_customizations.utils.hr.leave_application.attendance_custom_fields import attendance_custom_fields
 import frappe
 def after_install():
     create_custom_role()
@@ -9,7 +10,10 @@ def after_install():
     create_action()
     create_jobApplicant_workflow()
     create_leave_application_workflow()
+    create_compensation_request_workflow()
     leave_application_customization()
+    attendance_custom_fields()
+   
 
 def create_custom_role():
     existing_doc = frappe.db.get_value('Role', {'role_name': 'Receptionist'}, 'name')
@@ -233,5 +237,42 @@ def create_leave_application_workflow():
         allowed='HR Manager', allow_self_approval= 1,
     ))
    
+    workflow.insert(ignore_permissions=True)
+    return workflow
+
+def create_compensation_request_workflow():
+    if frappe.db.exists('Workflow', 'TS Compensation Request workflow'):
+        frappe.delete_doc('Workflow', 'TS Compensation Request workflow')
+    if not frappe.db.exists('Role', 'HR Manager'):
+        frappe.get_doc(dict(doctype='Role',
+            role_name='HR Manager')).insert(ignore_if_duplicate=True)
+    workflow = frappe.new_doc('Workflow')
+    workflow.workflow_name = 'TS Compensation Request workflow'
+    workflow.document_type = 'TS Compensation Request'
+    workflow.workflow_state_field = 'workflow_state'
+    workflow.is_active = 1
+    workflow.send_email_alert = 1
+    workflow.append('states', dict(
+    state = 'Draft', allow_edit = 'HR Manager', 
+    ))
+   
+    workflow.append('states', dict(
+    state = 'Approved', allow_edit = 'HR Manager'  ,doc_status = 1
+    ))
+    workflow.append('states', dict(
+    state = 'Rejected', allow_edit = 'HR Manager'
+    ))
+
+
+    workflow.append('transitions', dict(
+    state = 'Draft', action='Approve', next_state = 'Approved',
+    allowed='HR Manager', allow_self_approval= 1
+    ))
+    workflow.append('transitions', dict(
+    state = 'Draft', action='Reject', next_state = 'Rejected',
+    allowed='HR Manager', allow_self_approval= 1
+    ))
+
+
     workflow.insert(ignore_permissions=True)
     return workflow

@@ -64,4 +64,3 @@ def send_invoice(cus, name, doctype):
     conn.request("POST", "/v1/public/message/", payload, headers)
     res = conn.getresponse()
     data = res.read()
-    print(data.decode("utf-8"))
