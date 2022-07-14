@@ -19,7 +19,6 @@ frappe.ui.form.on("TS Compensation Request",{
             },
             callback: function(r){
 				var approver=r.message[0]
-				console.log(approver)
                 frm.set_value("ts_compen_approver_name",approver)
             }
         })
