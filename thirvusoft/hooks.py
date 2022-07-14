@@ -34,7 +34,8 @@ app_license = "MIT"
 doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
 				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
 				"Project":"thirvusoft_customizations/custom/js/project.js",
-				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js"
+				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js",
+				"Employee":"thirvusoft_customizations/custom/js/employee.js"
 			}
 doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
 
@@ -94,9 +95,6 @@ after_install=["thirvusoft.thirvusoft_customizations.custom.python.install.after
 doc_events = {
 	"Job Applicant": {
 		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
-	},
-	"Employee":{
-		"before_save":"thirvusoft.thirvusoft_customizations.custom.python.employee.employee_abbreviation"
 	},
 	"Issue":{
 		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
