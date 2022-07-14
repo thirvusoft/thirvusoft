@@ -95,6 +95,9 @@ doc_events = {
 	"Job Applicant": {
 		"validate": "thirvusoft.thirvusoft_customizations.custom.python.Job_Application.validation",
 	},
+	"Employee":{
+		"before_save":"thirvusoft.thirvusoft_customizations.custom.python.employee.employee_abbreviation"
+	},
 	"Issue":{
 		"validate":"thirvusoft.thirvusoft_customizations.custom.python.issue.validate_phone"
 	},
