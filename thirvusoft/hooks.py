@@ -31,7 +31,6 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-
 doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
 				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
 				"Project":"thirvusoft_customizations/custom/js/project.js",
@@ -132,23 +131,23 @@ override_doctype_class = {
 # ---------------
 
 scheduler_events = {
-    "cron": {
-        "0 9,12,16 * * *": [
-            "thirvusoft.thirvusoft_customizations.custom.python.lead_notification.lead_notification",
-        ],
-    },
-    "daily": [
-        "thirvusoft.thirvusoft_customizations.custom.python.lead_notification.next_contact_notification"
-    ]
-    # "hourly": [
-    # 	"thirvusoft.tasks.hourly"
-    # ],
-    # "weekly": [
-    # 	"thirvusoft.tasks.weekly"
-    # ]
-    # "monthly": [
-    # 	"thirvusoft.tasks.monthly"
-    # ]
+	"cron": {
+		"0 9,12,16 * * *": [
+					"thirvusoft.thirvusoft_customizations.custom.python.lead_notification.lead_notification",
+				],
+	},
+	"daily": [
+		"thirvusoft.thirvusoft_customizations.custom.python.lead_notification.next_contact_notification"
+	]
+	# "hourly": [
+	# 	"thirvusoft.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"thirvusoft.tasks.weekly"
+	# ]
+	# "monthly": [
+	# 	"thirvusoft.tasks.monthly"
+	# ]
 }
 
 # Testing
@@ -179,27 +178,25 @@ scheduler_events = {
 # --------------------
 
 user_data_fields = [
-    {
-        "doctype": "{doctype_1}",
-        "filter_by": "{filter_by}",
-        "redact_fields": ["{field_1}", "{field_2}"],
-        "partial": 1,
-    },
-    {
-        "doctype": "{doctype_2}",
-        "filter_by": "{filter_by}",
-        "partial": 1,
-    },
-    {
-        "doctype": "{doctype_3}",
-        "strict": False,
-    },
-    {
-        "doctype": "{doctype_4}"
-    }
+	{
+		"doctype": "{doctype_1}",
+		"filter_by": "{filter_by}",
+		"redact_fields": ["{field_1}", "{field_2}"],
+		"partial": 1,
+	},
+	{
+		"doctype": "{doctype_2}",
+		"filter_by": "{filter_by}",
+		"partial": 1,
+	},
+	{
+		"doctype": "{doctype_3}",
+		"strict": False,
+	},
+	{
+		"doctype": "{doctype_4}"
+	}
 ]
-after_migrate = [
-    "thirvusoft.thirvusoft_customizations.custom.python.naming_series.employee_naming_series"]
 
 # Authentication and authorization
 # --------------------------------

@@ -45,30 +45,30 @@ def validation(self, phone):
   
     if(self.applicant_name != None):
         self.applicant_name = self.applicant_name.capitalize()
-    if(self.city != None):
-        self.city = self.city.capitalize()
-    if(self.address != None):
-        self.address = self.address.capitalize()
-    if(self.state != None):
-        self.state = self.state.capitalize()
-    if(self.describe_your_skills != None):
-        self.describe_your_skillse = self.describe_your_skills.capitalize()
+    # if(self.city != None):
+    #     self.city = self.city.capitalize()
+    if(self.ts_address != None):
+        self.ts_address = self.ts_address.capitalize()
+    # if(self.state != None):
+    #     self.state = self.state.capitalize()
+    # if(self.describe_your_skills != None):
+    #     self.describe_your_skillse = self.describe_your_skills.capitalize()
     if(self.parentguardian_name != None):
         self.parentguardian_name = self.parentguardian_name.capitalize()
     if(self.parentguardian_occupation != None):
         self.parentguardian_occupation = self.parentguardian_occupation.capitalize()
-    if(self.how_they_are_related_to_you != None):
-        self.how_they_are_related_to_you = self.how_they_are_related_to_you.capitalize()
-    if(self.referral_employee != None):
-        self.referral_employee = self.referral_employee.capitalize()
-    if(self.job_portal != None):
-        self.job_portal = self.job_portal.capitalize()
-    if(self.referral_contact != None):
-        self.referral_contact = self.referral_contact.capitalize()
-    if(self.cover_letter != None):
-        self.cover_letter = self.cover_letter.capitalize()
-    if(self.n != None):
-        self.n = self.n.capitalize()
+    if(self.how_they_are_related_to_you_ != None):
+        self.how_they_are_related_to_you_ = self.how_they_are_related_to_you_.capitalize()
+    # if(self.referral_employee_name != None):
+    #     self.referral_employee_name = self.referral_employee_name.capitalize()
+    # if(self.job_portal != None):
+    #     self.job_portal = self.job_portal.capitalize()
+    # if(self.referral_contact != None):
+    #     self.referral_contact = self.referral_contact.capitalize()
+    # if(self.cover_letter != None):
+    #     self.cover_letter = self.cover_letter.capitalize()
+    # if(self.n != None):
+    #     self.n = self.n.capitalize()
 
 def issues_raised(self,action):
     total_issues=len(frappe.db.get_all("Issue", filters={'project':self.project}))
