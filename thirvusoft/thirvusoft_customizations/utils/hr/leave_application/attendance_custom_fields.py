@@ -16,7 +16,6 @@ def attendance_custom_fields():
             dict(fieldname='compensation_day', label='Compensation',
                  fieldtype='Link', options='TS Compensation Request', insert_after='compensation' ,readonly=1),
   
-  
         ]
     }
     create_custom_fields(custom_fields)
