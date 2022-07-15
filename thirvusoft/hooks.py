@@ -36,7 +36,7 @@ doctype_js = {	"Task" : "thirvusoft_customizations/custom/js/task.js",
 				"Salary Slip" : "thirvusoft_customizations/custom/js/salaryslip_expense_details.js",
 				"Project":"thirvusoft_customizations/custom/js/project.js",
 				"Leave Application":"thirvusoft_customizations/custom/js/leave_application.js",
-				"Employee":"thirvusoft_customizations/custom/js/employee.js"
+				"Employee":"thirvusoft_customizations/custom/js/employee.js",
 				"Lead":"thirvusoft_customizations/custom/js/lead.js",
                 			}
 doctype_list_js = {"Interview" : "thirvusoft_customizations/custom/js/interview.js"}
