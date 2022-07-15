@@ -40,12 +40,8 @@ def compensation_customization():
 @frappe.whitelist()
 def cm_approver(em_name):
     name= frappe.get_all("Employee",filters={'name':em_name}, fields=['compen_approver'],pluck='compen_approver')
-    return name
-    
+    return name 
 @frappe.whitelist()
 def cm_name(approver_name):
     name= frappe.get_all("User",filters={'email':approver_name}, fields=['full_name'],pluck='full_name')
     return name
-    
-    
-
